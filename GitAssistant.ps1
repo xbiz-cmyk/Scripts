@@ -124,8 +124,8 @@ function Handle-PullRequestMenu {
                 Write-Host ""
 
                 $title = Read-Host "--> PR Title"
-                $body = Read-Host "--> PR Body (optional, press Enter to skip)"
-                $baseBranch = Read-Host "--> Base branch (e.g., main, master, production - default: main)"
+                $body = Read-Host '--> PR Body (optional, press Enter to skip)'
+                $baseBranch = Read-Host '--> Base branch (e.g., main, master, production - default: main)'
                 if ([string]::IsNullOrWhiteSpace($baseBranch)) { $baseBranch = "main" }
 
                 if ($title) {
@@ -191,9 +191,9 @@ function Handle-PullRequestMenu {
                 $prNumber = Read-Host "--> Pull Request number to merge"
                 if ($prNumber) {
                     Write-Host "  Merge methods:" -ForegroundColor Yellow
-                    Write-Host "  1. Merge commit (--merge): Keeps all commit history from the PR branch."
-                    Write-Host "  2. Squash merge (--squash): Combines all PR commits into one new commit on base."
-                    Write-Host "  3. Rebase merge (--rebase): Reapplies PR commits individually on top of base history."
+                    Write-Host '  1. Merge commit (--merge): Keeps all commit history from the PR branch.'
+                    Write-Host '  2. Squash merge (--squash): Combines all PR commits into one new commit on base.'
+                    Write-Host '  3. Rebase merge (--rebase): Reapplies PR commits individually on top of base history.'
                     $mergeMethod = Read-Host "--> Choose merge method (1, 2, or 3 - default: 1)"
                     $mergeOption = switch ($mergeMethod) {
                         '2' { "--squash" }
