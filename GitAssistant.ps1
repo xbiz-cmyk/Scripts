@@ -200,7 +200,7 @@ function Handle-PullRequestMenu {
                         '3' { "--rebase" }
                         default { "--merge" }
                     }
-                    $confirm = Read-Host '--> CONFIRM: Merge PR #$prNumber using $mergeOption? (y/n)'
+                    $confirm = Read-Host "--> CONFIRM: Merge PR #$prNumber using $mergeOption? [y/n]"
                     if ($confirm -eq 'y') {
                         gh pr merge $prNumber $mergeOption
                         $commandsUsed += "gh pr merge $prNumber $mergeOption"
@@ -343,12 +343,12 @@ function Handle-BranchMenu {
                 Write-Host "--> Local branches:"; git branch
                 $db = Read-Host "--> Branch to delete"
                 if ($db) {
-                    $c = Read-Host "--> Delete '$db'? [y/n]"
+                    $c = Read-Host "--> Delete [$db]? [y/n]"
                     if ($c -eq 'y') {
                         git branch -d $db
                         $commandsUsed += "git branch -d $db"
                         if ($LASTEXITCODE -ne 0) {
-                            $force = Read-Host '--> Not fully merged. Force delete? (y/n)'
+                            $force = Read-Host "--> Not fully merged. Force delete? [y/n]"
                             if ($force -eq 'y') {
                                 git branch -D $db
                                 $commandsUsed += "git branch -D $db"
@@ -373,9 +373,9 @@ function Handle-BranchMenu {
                 Write-Host ""
                 if (Check-Remote) {
                     Write-Host "--> Remote branches:"; git branch -r
-                    $rb = Read-Host "--> Remote branch to delete [without 'origin/' prefix]"
+                    $rb = Read-Host "--> Remote branch to delete [without origin/ prefix]"
                     if ($rb) {
-                        $c = Read-Host "--> Delete 'origin/$rb' from remote? [y/n]"
+                        $c = Read-Host "--> Delete origin/$rb from remote? [y/n]"
                         if ($c -eq 'y') {
                             git push origin --delete $rb
                             $commandsUsed += "git push origin --delete $rb"
@@ -542,7 +542,7 @@ function Handle-RemoteMenu {
                 git remote -v | Out-Host; Write-Host ""
                 $name = Read-Host "--> Remote name to remove"
                 if ($name) {
-                    $c = Read-Host "--> Remove remote '$name'? [y/n]"
+                    $c = Read-Host "--> Remove remote $name? [y/n]"
                     if ($c -eq 'y') {
                         git remote remove $name
                         $commandsUsed += "git remote remove $name"
@@ -756,7 +756,7 @@ while ($true) {
                 if (-not (Test-Path $fp)) {
                     Write-Host "!! File '$fp' not found. Please enter a valid path." -ForegroundColor Red
                 } else {
-                    $msg = Read-Host "--> Commit message [leave blank for default: 'Update $fp']"
+                    $msg = Read-Host "--> Commit message [leave blank for: Update $fp]"
                     if ([string]::IsNullOrWhiteSpace($msg)) { $msg = "Update $fp" }
                     git add $fp
                     $commandsUsed += "git add $fp"
@@ -785,7 +785,7 @@ while ($true) {
                 if (-not (Test-Path $fp -PathType Container)) {
                     Write-Host "!! Folder '$fp' not found. Please enter a valid path." -ForegroundColor Red
                 } else {
-                    $msg = Read-Host "--> Commit message [leave blank for default: 'Update folder $fp']"
+                    $msg = Read-Host "--> Commit message [leave blank for: Update folder $fp]"
                     if ([string]::IsNullOrWhiteSpace($msg)) { $msg = "Update folder $fp" }
                     git add $fp
                     $commandsUsed += "git add $fp"
@@ -811,7 +811,7 @@ while ($true) {
             Write-Host ""
             $c = Read-Host '--> Stage ALL changes and commit? (y/n)'
             if ($c -eq 'y') {
-                $msg = Read-Host "--> Commit message [leave blank for default: 'General update']"
+                $msg = Read-Host "--> Commit message [leave blank for: General update]"
                 if ([string]::IsNullOrWhiteSpace($msg)) { $msg = "General update" }
                 git add .
                 $commandsUsed += "git add ."
@@ -902,7 +902,7 @@ while ($true) {
                         if (-not (Test-Path $fn)) {
                             Write-Host "!! File '$fn' not found. Please enter a valid path." -ForegroundColor Red
                         } else {
-                            $c = Read-Host "--> Discard changes in '$fn'? [y/n]"
+                            $c = Read-Host "--> Discard changes in $fn? [y/n]"
                             if ($c -eq 'y') {
                                 git checkout -- $fn
                                 $commandsUsed += "git checkout -- $fn"
@@ -920,7 +920,7 @@ while ($true) {
                         if (-not (Test-Path $fn)) {
                             Write-Host "!! File '$fn' not found. Please enter a valid path." -ForegroundColor Red
                         } else {
-                            $c = Read-Host "--> Unstage '$fn'? [y/n]"
+                            $c = Read-Host "--> Unstage $fn? [y/n]"
                             if ($c -eq 'y') {
                                 git reset HEAD $fn
                                 $commandsUsed += "git reset HEAD $fn"
@@ -964,7 +964,7 @@ while ($true) {
                 if ($LASTEXITCODE -eq 0) {
                     Write-Host "--> Repository cloned successfully." -ForegroundColor Green
                     if ($cloneDir) {
-                        $goIn = Read-Host "--> cd into '$cloneDir'? [y/n]"
+                        $goIn = Read-Host "--> cd into $cloneDir? [y/n]"
                         if ($goIn -eq 'y') {
                             Set-Location $cloneDir
                             $commandsUsed += "cd $cloneDir"
@@ -1008,7 +1008,7 @@ while ($true) {
                         Write-Host "--> Pushed and upstream set for '$currentBranch'." -ForegroundColor Green
                     }
                     'c' {
-                        $confirmForce = Read-Host '--> WARNING: Force push can overwrite remote history. Are you sure? (y/n)'
+                        $confirmForce = Read-Host "--> WARNING: Force push overwrites remote history. Are you sure? [y/n]"
                         if ($confirmForce -eq 'y') {
                             git push --force origin $currentBranch
                             $commandsUsed += "git push --force origin $currentBranch"
@@ -1018,7 +1018,7 @@ while ($true) {
                         }
                     }
                     default {
-                        $c = Read-Host "--> Push current branch '$currentBranch' to remote? [y/n]"
+                        $c = Read-Host "--> Push current branch $currentBranch to remote? [y/n]"
                         if ($c -eq 'y') {
                             git push
                             $commandsUsed += "git push"
@@ -1162,7 +1162,7 @@ while ($true) {
 
             $c = Read-Host '--> Stash current uncommitted changes? (y/n)'
             if ($c -eq 'y') {
-                $stashMessage = Read-Host "--> Optional: Enter a message for this stash [e.g., 'WIP: login form']"
+                $stashMessage = Read-Host "--> Optional stash message [e.g., WIP: login form]"
                 if ([string]::IsNullOrWhiteSpace($stashMessage)) {
                     git stash
                     $commandsUsed += "git stash"
@@ -1205,7 +1205,7 @@ while ($true) {
                     Write-Host "--> Latest stash applied." -ForegroundColor Green
                 }
                 'c' {
-                    $idx = Read-Host "--> Stash index to apply [e.g. 0 for 'stash@{0}']"
+                    $idx = Read-Host "--> Stash index to apply [e.g. 0 for stash 0]"
                     if ([string]::IsNullOrWhiteSpace($idx)) {
                         Write-Host "!! Stash index required." -ForegroundColor Red
                     } elseif ($idx -match "^\d+$") {
@@ -1254,7 +1254,7 @@ while ($true) {
                 Write-Host "--> Available branches (local):"; git branch | Out-Host
                 $b = Read-Host "--> Branch to merge INTO your current branch"
                 if ($b) {
-                    $c = Read-Host "--> Confirm merging '$b' into '$[git branch --show-current]'? [y/n]"
+                    $c = Read-Host "--> Confirm merging '$b' into the current branch? [y/n]"
                     if ($c -eq 'y') {
                         git merge $b
                         $commandsUsed += "git merge $b"
@@ -1285,7 +1285,7 @@ while ($true) {
                 Write-Host "--> Available branches (local):"; git branch | Out-Host
                 $b = Read-Host '--> Branch to rebase your current branch ONTO (e.g., main)'
                 if ($b) {
-                    $c = Read-Host "--> WARNING: Rebase current branch onto '$b'? This rewrites history! [y/n]"
+                    $c = Read-Host "--> WARNING: Rebase onto $b? This rewrites history! [y/n]"
                     if ($c -eq 'y') {
                         git rebase $b
                         $commandsUsed += "git rebase $b"
@@ -1314,7 +1314,7 @@ while ($true) {
 
             $h = Read-Host "--> Commit hash to cherry-pick"
             if ($h) {
-                $c = Read-Host "--> Cherry-pick commit '$h' onto current branch? [y/n]"
+                $c = Read-Host "--> Cherry-pick commit $h onto current branch? [y/n]"
                 if ($c -eq 'y') {
                     git cherry-pick $h
                     $commandsUsed += "git cherry-pick $h"
@@ -1342,7 +1342,7 @@ while ($true) {
 
             $h = Read-Host "--> Commit hash to revert"
             if ($h) {
-                $c = Read-Host "--> Revert commit '$h' [creates a new commit to undo it]? [y/n]"
+                $c = Read-Host "--> Revert commit $h? [creates a new commit to undo it] [y/n]"
                 if ($c -eq 'y') {
                     git revert --no-edit $h
                     $commandsUsed += "git revert --no-edit $h"
@@ -1370,7 +1370,7 @@ while ($true) {
 
             $t = Read-Host '--> Tag name (e.g., v1.0.0)'
             if ($t) {
-                $m = Read-Host "--> Tag message [e.g., 'Release version 1.0.0']"
+                $m = Read-Host "--> Tag message [e.g., Release version 1.0.0]"
                 if ([string]::IsNullOrWhiteSpace($m)) { $m = "$t release" }
                 git tag -a $t -m "$m"
                 $commandsUsed += "git tag -a $t -m '$m'"
