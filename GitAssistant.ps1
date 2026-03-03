@@ -41,7 +41,7 @@ function Check-Remote {
     $remoteOutput = git remote -v 2>&1
     if ($LASTEXITCODE -ne 0 -or -not ($remoteOutput -match "origin")) {
         Write-Host "!! This action requires a remote 'origin' repository, which is not set." -ForegroundColor Yellow
-        $confirm = Read-Host "--> Do you want to set one now? (y/n)"
+        $confirm = Read-Host '--> Do you want to set one now? (y/n)'
         if ($confirm -eq 'y') {
             $remoteUrl = Read-Host "--> Enter the remote repository URL"
             if ($remoteUrl) {
@@ -194,13 +194,13 @@ function Handle-PullRequestMenu {
                     Write-Host '  1. Merge commit (--merge): Keeps all commit history from the PR branch.'
                     Write-Host '  2. Squash merge (--squash): Combines all PR commits into one new commit on base.'
                     Write-Host '  3. Rebase merge (--rebase): Reapplies PR commits individually on top of base history.'
-                    $mergeMethod = Read-Host "--> Choose merge method (1, 2, or 3 - default: 1)"
+                    $mergeMethod = Read-Host '--> Choose merge method (1, 2, or 3 - default: 1)'
                     $mergeOption = switch ($mergeMethod) {
                         '2' { "--squash" }
                         '3' { "--rebase" }
                         default { "--merge" }
                     }
-                    $confirm = Read-Host "--> CONFIRM: Merge PR #$prNumber using $mergeOption? (y/n)"
+                    $confirm = Read-Host '--> CONFIRM: Merge PR #$prNumber using $mergeOption? (y/n)'
                     if ($confirm -eq 'y') {
                         gh pr merge $prNumber $mergeOption
                         $commandsUsed += "gh pr merge $prNumber $mergeOption"
@@ -348,7 +348,7 @@ function Handle-BranchMenu {
                         git branch -d $db
                         $commandsUsed += "git branch -d $db"
                         if ($LASTEXITCODE -ne 0) {
-                            $force = Read-Host "--> Not fully merged. Force delete? (y/n)"
+                            $force = Read-Host '--> Not fully merged. Force delete? (y/n)'
                             if ($force -eq 'y') {
                                 git branch -D $db
                                 $commandsUsed += "git branch -D $db"
@@ -424,7 +424,7 @@ function Handle-BranchMenu {
                 Write-Host "  • Command format: 'git branch --set-upstream-to=origin/main local-branch'." -ForegroundColor DarkGray
                 Write-Host ""
                 $current  = git branch --show-current
-                $upstream = Read-Host "--> Upstream to track (e.g. origin/main)"
+                $upstream = Read-Host '--> Upstream to track (e.g. origin/main)'
                 if ($upstream) {
                     git branch --set-upstream-to=$upstream $current
                     $commandsUsed += "git branch --set-upstream-to=$upstream $current"
@@ -494,7 +494,7 @@ function Handle-RemoteMenu {
                 Write-Host "  • Use the HTTPS or SSH URL provided by your Git host." -ForegroundColor DarkGray
                 Write-Host "  • After adding, you can 'git push -u <remote-name> <branch-name>'." -ForegroundColor DarkGray
                 Write-Host ""
-                $name = Read-Host "--> Remote name (e.g. origin)"
+                $name = Read-Host '--> Remote name (e.g. origin)'
                 $url  = Read-Host "--> Remote URL"
                 if ($name -and $url) {
                     git remote add $name $url
@@ -517,7 +517,7 @@ function Handle-RemoteMenu {
                 Write-Host "  • Can change both fetch and push URLs or just one specific." -ForegroundColor DarkGray
                 Write-Host ""
                 git remote -v | Out-Host; Write-Host ""
-                $name = Read-Host "--> Remote name to update (e.g. origin)"
+                $name = Read-Host '--> Remote name to update (e.g. origin)'
                 $url  = Read-Host "--> New URL"
                 if ($name -and $url) {
                     git remote set-url $name $url
@@ -566,7 +566,7 @@ function Handle-RemoteMenu {
                 Write-Host "  • Helps debug issues with remote connections or branch tracking." -ForegroundColor DarkGray
                 Write-Host "  • Can run 'git remote show origin' (or other remote name)." -ForegroundColor DarkGray
                 Write-Host ""
-                $name = Read-Host "--> Remote name (e.g. origin)"
+                $name = Read-Host '--> Remote name (e.g. origin)'
                 if ($name) {
                     git remote show $name
                     $commandsUsed += "git remote show $name"
@@ -661,7 +661,7 @@ while ($true) {
             if (Test-Path ".git") {
                 Write-Host "!! Already a Git repository." -ForegroundColor Yellow
             } else {
-                $c = Read-Host "--> Initialize here? (y/n)"
+                $c = Read-Host '--> Initialize here? (y/n)'
                 if ($c -eq 'y') {
                     git init
                     $commandsUsed += "git init"
@@ -809,7 +809,7 @@ while ($true) {
             Write-Host "  • Avoid committing unrelated changes together (mixes concerns, harder to revert)." -ForegroundColor DarkGray
             Write-Host "  • A clear, concise commit message is crucial for documenting these broad changes." -ForegroundColor DarkGray
             Write-Host ""
-            $c = Read-Host "--> Stage ALL changes and commit? (y/n)"
+            $c = Read-Host '--> Stage ALL changes and commit? (y/n)'
             if ($c -eq 'y') {
                 $msg = Read-Host "--> Commit message (leave blank for default: 'General update')"
                 if ([string]::IsNullOrWhiteSpace($msg)) { $msg = "General update" }
@@ -851,8 +851,8 @@ while ($true) {
                 }
                 'c' {
                     git branch -a | Out-Host; Write-Host ""
-                    $b1 = Read-Host "--> First branch (e.g., main)"
-                    $b2 = Read-Host "--> Second branch (e.g., feature/my-new-thing)"
+                    $b1 = Read-Host '--> First branch (e.g., main)'
+                    $b2 = Read-Host '--> Second branch (e.g., feature/my-new-thing)'
                     if ($b1 -and $b2) {
                         git diff "${b1}..${b2}"
                         $commandsUsed += "git diff '${b1}..${b2}'"
@@ -887,7 +887,7 @@ while ($true) {
             $d = Read-Host
             switch ($d) {
                 'a' {
-                    $c = Read-Host "--> DISCARD ALL uncommitted changes? (y/n)"
+                    $c = Read-Host '--> DISCARD ALL uncommitted changes? (y/n)'
                     if ($c -eq 'y') {
                         git checkout -- .
                         $commandsUsed += "git checkout -- ."
@@ -915,7 +915,7 @@ while ($true) {
                 }
                 'c' {
                     git diff --staged --name-only | Out-Host; Write-Host ""
-                    $fn = Read-Host "--> File to unstage (changes will be kept in working directory)"
+                    $fn = Read-Host '--> File to unstage (changes will be kept in working directory)'
                     if ($fn) {
                         if (-not (Test-Path $fn)) {
                             Write-Host "!! File '$fn' not found. Please enter a valid path." -ForegroundColor Red
@@ -953,7 +953,7 @@ while ($true) {
 
             $repoUrl = Read-Host "--> Repository URL to clone"
             if ($repoUrl) {
-                $cloneDir = Read-Host "--> Local folder name (leave blank for default, uses repo name)"
+                $cloneDir = Read-Host '--> Local folder name (leave blank for default, uses repo name)'
                 if ($cloneDir) {
                     git clone $repoUrl $cloneDir
                     $commandsUsed += "git clone $repoUrl $cloneDir"
@@ -1008,7 +1008,7 @@ while ($true) {
                         Write-Host "--> Pushed and upstream set for '$currentBranch'." -ForegroundColor Green
                     }
                     'c' {
-                        $confirmForce = Read-Host "--> WARNING: Force push can overwrite remote history. Are you sure? (y/n)"
+                        $confirmForce = Read-Host '--> WARNING: Force push can overwrite remote history. Are you sure? (y/n)'
                         if ($confirmForce -eq 'y') {
                             git push --force origin $currentBranch
                             $commandsUsed += "git push --force origin $currentBranch"
@@ -1047,7 +1047,7 @@ while ($true) {
             Write-Host ""
 
             if (Check-Remote) {
-                $c = Read-Host "--> Pull changes from remote? (y/n)"
+                $c = Read-Host '--> Pull changes from remote? (y/n)'
                 if ($c -eq 'y') {
                     git pull
                     $commandsUsed += "git pull"
@@ -1079,7 +1079,7 @@ while ($true) {
                 $fc = Read-Host
                 switch ($fc) {
                     'b' {
-                        $rn = Read-Host "--> Remote name (e.g. origin)"
+                        $rn = Read-Host '--> Remote name (e.g. origin)'
                         if ($rn) {
                             git fetch $rn --prune
                             $commandsUsed += "git fetch $rn --prune"
@@ -1160,7 +1160,7 @@ while ($true) {
             Write-Host "  • Helps keep your working directory clean when switching context." -ForegroundColor DarkGray
             Write-Host ""
 
-            $c = Read-Host "--> Stash current uncommitted changes? (y/n)"
+            $c = Read-Host '--> Stash current uncommitted changes? (y/n)'
             if ($c -eq 'y') {
                 $stashMessage = Read-Host "--> Optional: Enter a message for this stash (e.g., 'WIP: login form')"
                 if ([string]::IsNullOrWhiteSpace($stashMessage)) {
@@ -1217,7 +1217,7 @@ while ($true) {
                     }
                 }
                 default { # Default to pop
-                    $c = Read-Host "--> Pop latest stash (apply and remove from list)? (y/n)"
+                    $c = Read-Host '--> Pop latest stash (apply and remove from list)? (y/n)'
                     if ($c -eq 'y') {
                         git stash pop
                         $commandsUsed += "git stash pop"
@@ -1283,7 +1283,7 @@ while ($true) {
 
             if (Check-Remote) {
                 Write-Host "--> Available branches (local):"; git branch | Out-Host
-                $b = Read-Host "--> Branch to rebase your current branch ONTO (e.g., main)"
+                $b = Read-Host '--> Branch to rebase your current branch ONTO (e.g., main)'
                 if ($b) {
                     $c = Read-Host "--> WARNING: Rebase current branch onto '$b'? This rewrites history! (y/n)"
                     if ($c -eq 'y') {
@@ -1368,7 +1368,7 @@ while ($true) {
             Write-Host "  • You can view existing tags with 'git tag'." -ForegroundColor DarkGray
             Write-Host ""
 
-            $t = Read-Host "--> Tag name (e.g., v1.0.0)"
+            $t = Read-Host '--> Tag name (e.g., v1.0.0)'
             if ($t) {
                 $m = Read-Host "--> Tag message (e.g., 'Release version 1.0.0')"
                 if ([string]::IsNullOrWhiteSpace($m)) { $m = "$t release" }
