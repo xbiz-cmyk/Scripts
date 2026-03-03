@@ -12,7 +12,7 @@
 .AUTHOR
     kossi.eglo@stackit.cloud
 .DATE
-    July 31, 2025 — Updated March 3, 2026 (v5: explanations, command recap, PR management)
+    July 31, 2025 -- Updated March 3, 2026 (v5: explanations, command recap, PR management)
 #######################################################################################################################################
 #>
 
@@ -72,17 +72,17 @@ function Handle-PullRequestMenu {
         if ([string]::IsNullOrWhiteSpace($prChoice)) {
             Clear-Host; Show-Header
 
-            Write-Host "╔══════════════════════════════════════════════════════════════╗" -ForegroundColor Green
-            Write-Host "║                      gh pr                                   ║" -ForegroundColor Green
-            Write-Host "╚══════════════════════════════════════════════════════════════╝" -ForegroundColor Green
+            Write-Host "+==============================================================+" -ForegroundColor Green
+            Write-Host "|                      gh pr                                   |" -ForegroundColor Green
+            Write-Host "+==============================================================+" -ForegroundColor Green
             Write-Host "  What it does : Create, list, view, and merge Pull Requests on GitHub." -ForegroundColor Cyan
             Write-Host "  When to use  : When you want to propose changes for review before merging to main." -ForegroundColor Cyan
-            Write-Host "  Requires     : GitHub CLI (gh) — install from https://cli.github.com" -ForegroundColor Cyan
+            Write-Host "  Requires     : GitHub CLI (gh) -- install from https://cli.github.com" -ForegroundColor Cyan
             Write-Host ""
             Write-Host "  Hints:" -ForegroundColor White
-            Write-Host "  • PRs allow code review before merging." -ForegroundColor DarkGray
-            Write-Host "  • Always create from a feature branch, never from main." -ForegroundColor DarkGray
-            Write-Host "  • Authenticate with 'gh auth login' first." -ForegroundColor DarkGray
+            Write-Host "  - PRs allow code review before merging." -ForegroundColor DarkGray
+            Write-Host "  - Always create from a feature branch, never from main." -ForegroundColor DarkGray
+            Write-Host "  - Authenticate with 'gh auth login' first." -ForegroundColor DarkGray
             Write-Host ""
 
             Write-Host "--- Pull Request Management (GitHub CLI) ---" -ForegroundColor Green
@@ -109,18 +109,18 @@ function Handle-PullRequestMenu {
         switch ($prChoice) {
             'a' {
                 Write-Host ""
-                Write-Host "╔══════════════════════════════════════════════════════════════╗" -ForegroundColor Green
-                Write-Host "║                    gh pr create                              ║" -ForegroundColor Green
-                Write-Host "╚══════════════════════════════════════════════════════════════╝" -ForegroundColor Green
+                Write-Host "+==============================================================+" -ForegroundColor Green
+                Write-Host "|                    gh pr create                              |" -ForegroundColor Green
+                Write-Host "+==============================================================+" -ForegroundColor Green
                 Write-Host "  What it does : Creates a new Pull Request on GitHub." -ForegroundColor Cyan
                 Write-Host "  When to use  : When you're ready to propose changes from your current branch for review." -ForegroundColor Cyan
-                Write-Host "  Safe?        : Yes — creates a PR, doesn't directly modify code on remote." -ForegroundColor Cyan
+                Write-Host "  Safe?        : Yes -- creates a PR, doesn't directly modify code on remote." -ForegroundColor Cyan
                 Write-Host ""
                 Write-Host "  Hints:" -ForegroundColor White
-                Write-Host "  • Ensure your branch is pushed before creating a PR." -ForegroundColor DarkGray
-                Write-Host "  • Good titles are concise and informative." -ForegroundColor DarkGray
-                Write-Host "  • Good bodies explain *why* the changes are needed." -ForegroundColor DarkGray
-                Write-Host "  • Use --draft for PRs that are still work-in-progress." -ForegroundColor DarkGray
+                Write-Host "  - Ensure your branch is pushed before creating a PR." -ForegroundColor DarkGray
+                Write-Host "  - Good titles are concise and informative." -ForegroundColor DarkGray
+                Write-Host "  - Good bodies explain *why* the changes are needed." -ForegroundColor DarkGray
+                Write-Host "  - Use --draft for PRs that are still work-in-progress." -ForegroundColor DarkGray
                 Write-Host ""
 
                 $title = Read-Host "--> PR Title"
@@ -137,34 +137,34 @@ function Handle-PullRequestMenu {
             }
             'b' {
                 Write-Host ""
-                Write-Host "╔══════════════════════════════════════════════════════════════╗" -ForegroundColor Green
-                Write-Host "║                       gh pr list                             ║" -ForegroundColor Green
-                Write-Host "╚══════════════════════════════════════════════════════════════╝" -ForegroundColor Green
+                Write-Host "+==============================================================+" -ForegroundColor Green
+                Write-Host "|                       gh pr list                             |" -ForegroundColor Green
+                Write-Host "+==============================================================+" -ForegroundColor Green
                 Write-Host "  What it does : Lists active Pull Requests in the repository." -ForegroundColor Cyan
                 Write-Host "  When to use  : To get an overview of ongoing work and reviews." -ForegroundColor Cyan
-                Write-Host "  Safe?        : Yes — read-only." -ForegroundColor Cyan
+                Write-Host "  Safe?        : Yes -- read-only." -ForegroundColor Cyan
                 Write-Host ""
                 Write-Host "  Hints:" -ForegroundColor White
-                Write-Host "  • Shows open PRs by default." -ForegroundColor DarkGray
-                Write-Host "  • Use '--state all' or '--state closed' to see others." -ForegroundColor DarkGray
-                Write-Host "  • Filter by author or assignee for specific PRs." -ForegroundColor DarkGray
+                Write-Host "  - Shows open PRs by default." -ForegroundColor DarkGray
+                Write-Host "  - Use '--state all' or '--state closed' to see others." -ForegroundColor DarkGray
+                Write-Host "  - Filter by author or assignee for specific PRs." -ForegroundColor DarkGray
                 Write-Host ""
                 gh pr list
                 $commandsUsed += "gh pr list"
             }
             'c' {
                 Write-Host ""
-                Write-Host "╔══════════════════════════════════════════════════════════════╗" -ForegroundColor Green
-                Write-Host "║                       gh pr view                             ║" -ForegroundColor Green
-                Write-Host "╚══════════════════════════════════════════════════════════════╝" -ForegroundColor Green
+                Write-Host "+==============================================================+" -ForegroundColor Green
+                Write-Host "|                       gh pr view                             |" -ForegroundColor Green
+                Write-Host "+==============================================================+" -ForegroundColor Green
                 Write-Host "  What it does : Displays details of a specific Pull Request." -ForegroundColor Cyan
                 Write-Host "  When to use  : To inspect a PR's changes, comments, and status." -ForegroundColor Cyan
-                Write-Host "  Safe?        : Yes — read-only." -ForegroundColor Cyan
+                Write-Host "  Safe?        : Yes -- read-only." -ForegroundColor Cyan
                 Write-Host ""
                 Write-Host "  Hints:" -ForegroundColor White
-                Write-Host "  • Use the PR number from 'gh pr list'." -ForegroundColor DarkGray
-                Write-Host "  • Shows title, body, commits, and files changed." -ForegroundColor DarkGray
-                Write-Host "  • Can include web link to open in browser." -ForegroundColor DarkGray
+                Write-Host "  - Use the PR number from 'gh pr list'." -ForegroundColor DarkGray
+                Write-Host "  - Shows title, body, commits, and files changed." -ForegroundColor DarkGray
+                Write-Host "  - Can include web link to open in browser." -ForegroundColor DarkGray
                 Write-Host ""
                 $prNumber = Read-Host "--> Pull Request number"
                 if ($prNumber) {
@@ -176,17 +176,17 @@ function Handle-PullRequestMenu {
             }
             'd' {
                 Write-Host ""
-                Write-Host "╔══════════════════════════════════════════════════════════════╗" -ForegroundColor Green
-                Write-Host "║                       gh pr merge                            ║" -ForegroundColor Green
-                Write-Host "╚══════════════════════════════════════════════════════════════╝" -ForegroundColor Green
+                Write-Host "+==============================================================+" -ForegroundColor Green
+                Write-Host "|                       gh pr merge                            |" -ForegroundColor Green
+                Write-Host "+==============================================================+" -ForegroundColor Green
                 Write-Host "  What it does : Merges a Pull Request into its base branch." -ForegroundColor Cyan
                 Write-Host "  When to use  : When a PR has been approved and is ready to be integrated." -ForegroundColor Cyan
-                Write-Host "  Safe?        : CAREFUL — permanently alters repository history." -ForegroundColor Red
+                Write-Host "  Safe?        : CAREFUL -- permanently alters repository history." -ForegroundColor Red
                 Write-Host ""
                 Write-Host "  Hints:" -ForegroundColor White
-                Write-Host "  • Ensure all checks pass and PR is approved before merging." -ForegroundColor DarkGray
-                Write-Host "  • Choose merge, squash, or rebase depending on workflow." -ForegroundColor DarkGray
-                Write-Host "  • Merge conflicts need to be resolved before merging." -ForegroundColor DarkGray
+                Write-Host "  - Ensure all checks pass and PR is approved before merging." -ForegroundColor DarkGray
+                Write-Host "  - Choose merge, squash, or rebase depending on workflow." -ForegroundColor DarkGray
+                Write-Host "  - Merge conflicts need to be resolved before merging." -ForegroundColor DarkGray
                 Write-Host ""
                 $prNumber = Read-Host "--> Pull Request number to merge"
                 if ($prNumber) {
@@ -213,17 +213,17 @@ function Handle-PullRequestMenu {
             }
             'e' {
                 Write-Host ""
-                Write-Host "╔══════════════════════════════════════════════════════════════╗" -ForegroundColor Green
-                Write-Host "║                     gh pr checkout                             ║" -ForegroundColor Green
-                Write-Host "╚══════════════════════════════════════════════════════════════╝" -ForegroundColor Green
+                Write-Host "+==============================================================+" -ForegroundColor Green
+                Write-Host "|                     gh pr checkout                             |" -ForegroundColor Green
+                Write-Host "+==============================================================+" -ForegroundColor Green
                 Write-Host "  What it does : Fetches a Pull Request's branch and checks it out locally." -ForegroundColor Cyan
                 Write-Host "  When to use  : To test a PR's changes on your local machine before merging." -ForegroundColor Cyan
-                Write-Host "  Safe?        : Yes — creates a local branch, doesn't modify remote." -ForegroundColor Cyan
+                Write-Host "  Safe?        : Yes -- creates a local branch, doesn't modify remote." -ForegroundColor Cyan
                 Write-Host ""
                 Write-Host "  Hints:" -ForegroundColor White
-                Write-Host "  • Allows you to run local tests or manually review code." -ForegroundColor DarkGray
-                Write-Host "  • Creates a new local branch named after the PR." -ForegroundColor DarkGray
-                Write-Host "  • Use 'git switch main' to return to your main branch afterward." -ForegroundColor DarkGray
+                Write-Host "  - Allows you to run local tests or manually review code." -ForegroundColor DarkGray
+                Write-Host "  - Creates a new local branch named after the PR." -ForegroundColor DarkGray
+                Write-Host "  - Use 'git switch main' to return to your main branch afterward." -ForegroundColor DarkGray
                 Write-Host ""
                 $prNumber = Read-Host "--> Pull Request number to checkout"
                 if ($prNumber) {
@@ -269,35 +269,35 @@ function Handle-BranchMenu {
         switch ($branchChoice) {
             '1' {
                 Write-Host ""
-                Write-Host "╔══════════════════════════════════════════════════════════════╗" -ForegroundColor Green
-                Write-Host "║                       git branch -a                          ║" -ForegroundColor Green
-                Write-Host "╚══════════════════════════════════════════════════════════════╝" -ForegroundColor Green
+                Write-Host "+==============================================================+" -ForegroundColor Green
+                Write-Host "|                       git branch -a                          |" -ForegroundColor Green
+                Write-Host "+==============================================================+" -ForegroundColor Green
                 Write-Host "  What it does : Lists all local and remote branches in your repository." -ForegroundColor Cyan
                 Write-Host "  When to use  : To see available branches and your current location." -ForegroundColor Cyan
-                Write-Host "  Safe?        : Yes — read-only, no changes are made." -ForegroundColor Cyan
+                Write-Host "  Safe?        : Yes -- read-only, no changes are made." -ForegroundColor Cyan
                 Write-Host ""
                 Write-Host "  Hints:" -ForegroundColor White
-                Write-Host "  • Local branches are shown without 'remotes/origin/'." -ForegroundColor DarkGray
-                Write-Host "  • The current branch has an asterisk (*) next to it." -ForegroundColor DarkGray
-                Write-Host "  • Remote branches are prefixed with 'remotes/origin/'." -ForegroundColor DarkGray
-                Write-Host "  • Use 'git branch --all' (or '-a') to see both local and remote." -ForegroundColor DarkGray
+                Write-Host "  - Local branches are shown without 'remotes/origin/'." -ForegroundColor DarkGray
+                Write-Host "  - The current branch has an asterisk (*) next to it." -ForegroundColor DarkGray
+                Write-Host "  - Remote branches are prefixed with 'remotes/origin/'." -ForegroundColor DarkGray
+                Write-Host "  - Use 'git branch --all' (or '-a') to see both local and remote." -ForegroundColor DarkGray
                 Write-Host ""
                 git branch -a
                 $commandsUsed += "git branch -a"
             }
             '2' {
                 Write-Host ""
-                Write-Host "╔══════════════════════════════════════════════════════════════╗" -ForegroundColor Green
-                Write-Host "║                    git checkout -b                           ║" -ForegroundColor Green
-                Write-Host "╚══════════════════════════════════════════════════════════════╝" -ForegroundColor Green
+                Write-Host "+==============================================================+" -ForegroundColor Green
+                Write-Host "|                    git checkout -b                           |" -ForegroundColor Green
+                Write-Host "+==============================================================+" -ForegroundColor Green
                 Write-Host "  What it does : Creates a new branch and immediately switches to it." -ForegroundColor Cyan
                 Write-Host "  When to use  : Starting work on a new feature, bug fix, or experiment." -ForegroundColor Cyan
-                Write-Host "  Safe?        : Yes — doesn't affect other branches or remote." -ForegroundColor Cyan
+                Write-Host "  Safe?        : Yes -- doesn't affect other branches or remote." -ForegroundColor Cyan
                 Write-Host ""
                 Write-Host "  Hints:" -ForegroundColor White
-                Write-Host "  • Branch names should be descriptive (e.g., feature/login-page)." -ForegroundColor DarkGray
-                Write-Host "  • Best practice: create branches from an up-to-date 'main' or 'master'." -ForegroundColor DarkGray
-                Write-Host "  • Your current working directory changes to the new branch." -ForegroundColor DarkGray
+                Write-Host "  - Branch names should be descriptive (e.g., feature/login-page)." -ForegroundColor DarkGray
+                Write-Host "  - Best practice: create branches from an up-to-date 'main' or 'master'." -ForegroundColor DarkGray
+                Write-Host "  - Your current working directory changes to the new branch." -ForegroundColor DarkGray
                 Write-Host ""
                 $nb = Read-Host "--> New branch name"
                 if ($nb) {
@@ -307,17 +307,17 @@ function Handle-BranchMenu {
             }
             '3' {
                 Write-Host ""
-                Write-Host "╔══════════════════════════════════════════════════════════════╗" -ForegroundColor Green
-                Write-Host "║                     git checkout / switch                    ║" -ForegroundColor Green
-                Write-Host "╚══════════════════════════════════════════════════════════════╝" -ForegroundColor Green
+                Write-Host "+==============================================================+" -ForegroundColor Green
+                Write-Host "|                     git checkout / switch                    |" -ForegroundColor Green
+                Write-Host "+==============================================================+" -ForegroundColor Green
                 Write-Host "  What it does : Switches your working directory to an existing branch." -ForegroundColor Cyan
                 Write-Host "  When to use  : To work on an existing feature, review code, or prepare a merge." -ForegroundColor Cyan
-                Write-Host "  Safe?        : Yes — provided your current changes are committed or stashed." -ForegroundColor Yellow
+                Write-Host "  Safe?        : Yes -- provided your current changes are committed or stashed." -ForegroundColor Yellow
                 Write-Host ""
                 Write-Host "  Hints:" -ForegroundColor White
-                Write-Host "  • Always commit or stash your changes before switching branches." -ForegroundColor DarkGray
-                Write-Host "  • You can use 'git switch <branch-name>' for newer Git versions." -ForegroundColor DarkGray
-                Write-Host "  • Switching branches updates your files to that branch's state." -ForegroundColor DarkGray
+                Write-Host "  - Always commit or stash your changes before switching branches." -ForegroundColor DarkGray
+                Write-Host '  - You can use git switch [branch-name] for newer Git versions.' -ForegroundColor DarkGray
+                Write-Host "  - Switching branches updates your files to that branch's state." -ForegroundColor DarkGray
                 Write-Host ""
                 Write-Host "--> Local branches:"; git branch
                 $sb = Read-Host "--> Switch to branch"
@@ -328,22 +328,22 @@ function Handle-BranchMenu {
             }
             '4' {
                 Write-Host ""
-                Write-Host "╔══════════════════════════════════════════════════════════════╗" -ForegroundColor Green
-                Write-Host "║                       git branch -d                          ║" -ForegroundColor Green
-                Write-Host "╚══════════════════════════════════════════════════════════════╝" -ForegroundColor Green
+                Write-Host "+==============================================================+" -ForegroundColor Green
+                Write-Host "|                       git branch -d                          |" -ForegroundColor Green
+                Write-Host "+==============================================================+" -ForegroundColor Green
                 Write-Host "  What it does : Deletes a local branch from your repository." -ForegroundColor Cyan
                 Write-Host "  When to use  : After a feature branch has been merged and is no longer needed." -ForegroundColor Cyan
                 Write-Host "  Safe?        : Yes, if merged. Use -D to force delete unmerged work (careful!)." -ForegroundColor Yellow
                 Write-Host ""
                 Write-Host "  Hints:" -ForegroundColor White
-                Write-Host "  • Can only delete branches that are fully merged into another branch." -ForegroundColor DarkGray
-                Write-Host "  • Use 'git branch -D' (capital D) to force delete, even if unmerged." -ForegroundColor DarkGray
-                Write-Host "  • Deleting a local branch does not affect the remote branch." -ForegroundColor DarkGray
+                Write-Host "  - Can only delete branches that are fully merged into another branch." -ForegroundColor DarkGray
+                Write-Host "  - Use 'git branch -D' (capital D) to force delete, even if unmerged." -ForegroundColor DarkGray
+                Write-Host "  - Deleting a local branch does not affect the remote branch." -ForegroundColor DarkGray
                 Write-Host ""
                 Write-Host "--> Local branches:"; git branch
                 $db = Read-Host "--> Branch to delete"
                 if ($db) {
-                    $c = Read-Host "--> Delete '$db'? (y/n)"
+                    $c = Read-Host "--> Delete '$db'? [y/n]"
                     if ($c -eq 'y') {
                         git branch -d $db
                         $commandsUsed += "git branch -d $db"
@@ -359,23 +359,23 @@ function Handle-BranchMenu {
             }
             '5' {
                 Write-Host ""
-                Write-Host "╔══════════════════════════════════════════════════════════════╗" -ForegroundColor Green
-                Write-Host "║                    git push origin --delete                  ║" -ForegroundColor Green
-                Write-Host "╚══════════════════════════════════════════════════════════════╝" -ForegroundColor Green
+                Write-Host "+==============================================================+" -ForegroundColor Green
+                Write-Host "|                    git push origin --delete                  |" -ForegroundColor Green
+                Write-Host "+==============================================================+" -ForegroundColor Green
                 Write-Host "  What it does : Deletes a branch from the remote repository." -ForegroundColor Cyan
                 Write-Host "  When to use  : After a remote feature branch has been merged and is no longer needed." -ForegroundColor Cyan
-                Write-Host "  Safe?        : CAREFUL — permanently removes the branch from the remote." -ForegroundColor Red
+                Write-Host "  Safe?        : CAREFUL -- permanently removes the branch from the remote." -ForegroundColor Red
                 Write-Host ""
                 Write-Host "  Hints:" -ForegroundColor White
-                Write-Host "  • This is a destructive action; ensure the branch is truly unneeded." -ForegroundColor DarkGray
-                Write-Host "  • Always delete the local branch first for consistency." -ForegroundColor DarkGray
-                Write-Host "  • Confirm with teammates if it's a shared branch." -ForegroundColor DarkGray
+                Write-Host "  - This is a destructive action; ensure the branch is truly unneeded." -ForegroundColor DarkGray
+                Write-Host "  - Always delete the local branch first for consistency." -ForegroundColor DarkGray
+                Write-Host "  - Confirm with teammates if it's a shared branch." -ForegroundColor DarkGray
                 Write-Host ""
                 if (Check-Remote) {
                     Write-Host "--> Remote branches:"; git branch -r
-                    $rb = Read-Host "--> Remote branch to delete (without 'origin/' prefix)"
+                    $rb = Read-Host "--> Remote branch to delete [without 'origin/' prefix]"
                     if ($rb) {
-                        $c = Read-Host "--> Delete 'origin/$rb' from remote? (y/n)"
+                        $c = Read-Host "--> Delete 'origin/$rb' from remote? [y/n]"
                         if ($c -eq 'y') {
                             git push origin --delete $rb
                             $commandsUsed += "git push origin --delete $rb"
@@ -388,17 +388,17 @@ function Handle-BranchMenu {
             }
             '6' {
                 Write-Host ""
-                Write-Host "╔══════════════════════════════════════════════════════════════╗" -ForegroundColor Green
-                Write-Host "║                       git branch -m                          ║" -ForegroundColor Green
-                Write-Host "╚══════════════════════════════════════════════════════════════╝" -ForegroundColor Green
+                Write-Host "+==============================================================+" -ForegroundColor Green
+                Write-Host "|                       git branch -m                          |" -ForegroundColor Green
+                Write-Host "+==============================================================+" -ForegroundColor Green
                 Write-Host "  What it does : Renames your current local branch." -ForegroundColor Cyan
                 Write-Host "  When to use  : To correct a typo, or update a branch name for clarity." -ForegroundColor Cyan
-                Write-Host "  Safe?        : Yes — only affects your local branch name." -ForegroundColor Cyan
+                Write-Host "  Safe?        : Yes -- only affects your local branch name." -ForegroundColor Cyan
                 Write-Host ""
                 Write-Host "  Hints:" -ForegroundColor White
-                Write-Host "  • Does not rename the remote branch; you'll need to push the new name." -ForegroundColor DarkGray
-                Write-Host "  • Make sure you're on the branch you want to rename." -ForegroundColor DarkGray
-                Write-Host "  • Consider communicating branch name changes to teammates." -ForegroundColor DarkGray
+                Write-Host "  - Does not rename the remote branch; you'll need to push the new name." -ForegroundColor DarkGray
+                Write-Host "  - Make sure you're on the branch you want to rename." -ForegroundColor DarkGray
+                Write-Host "  - Consider communicating branch name changes to teammates." -ForegroundColor DarkGray
                 Write-Host ""
                 $current = git branch --show-current
                 Write-Host "--> Current branch: $current" -ForegroundColor Cyan
@@ -411,17 +411,17 @@ function Handle-BranchMenu {
             }
             '7' {
                 Write-Host ""
-                Write-Host "╔══════════════════════════════════════════════════════════════╗" -ForegroundColor Green
-                Write-Host "║                    git branch --set-upstream-to              ║" -ForegroundColor Green
-                Write-Host "╚══════════════════════════════════════════════════════════════╝" -ForegroundColor Green
+                Write-Host "+==============================================================+" -ForegroundColor Green
+                Write-Host "|                    git branch --set-upstream-to              |" -ForegroundColor Green
+                Write-Host "+==============================================================+" -ForegroundColor Green
                 Write-Host "  What it does : Configures your local branch to track a remote branch." -ForegroundColor Cyan
                 Write-Host "  When to use  : For new local branches or if tracking gets out of sync." -ForegroundColor Cyan
-                Write-Host "  Safe?        : Yes — only configures tracking, no code changes." -ForegroundColor Cyan
+                Write-Host "  Safe?        : Yes -- only configures tracking, no code changes." -ForegroundColor Cyan
                 Write-Host ""
                 Write-Host "  Hints:" -ForegroundColor White
-                Write-Host "  • Essential for 'git pull' and 'git push' to know where to sync." -ForegroundColor DarkGray
-                Write-Host "  • Typically done automatically on the first 'git push -u'." -ForegroundColor DarkGray
-                Write-Host "  • Command format: 'git branch --set-upstream-to=origin/main local-branch'." -ForegroundColor DarkGray
+                Write-Host "  - Essential for 'git pull' and 'git push' to know where to sync." -ForegroundColor DarkGray
+                Write-Host "  - Typically done automatically on the first 'git push -u'." -ForegroundColor DarkGray
+                Write-Host "  - Command format: 'git branch --set-upstream-to=origin/main local-branch'." -ForegroundColor DarkGray
                 Write-Host ""
                 $current  = git branch --show-current
                 $upstream = Read-Host '--> Upstream to track (e.g. origin/main)'
@@ -453,17 +453,17 @@ function Handle-RemoteMenu {
         if ([string]::IsNullOrWhiteSpace($remoteChoice)) {
             Clear-Host; Show-Header
 
-            Write-Host "╔══════════════════════════════════════════════════════════════╗" -ForegroundColor Green
-            Write-Host "║                       git remote                             ║" -ForegroundColor Green
-            Write-Host "╚══════════════════════════════════════════════════════════════╝" -ForegroundColor Green
+            Write-Host "+==============================================================+" -ForegroundColor Green
+            Write-Host "|                       git remote                             |" -ForegroundColor Green
+            Write-Host "+==============================================================+" -ForegroundColor Green
             Write-Host "  What it does : Manages connections to your remote repositories." -ForegroundColor Cyan
             Write-Host "  When to use  : For linking your local repo to GitHub/GitLab, or changing URLs." -ForegroundColor Cyan
             Write-Host "  Safe?        : Most operations are safe, deleting/changing URLs requires care." -ForegroundColor Yellow
             Write-Host ""
             Write-Host "  Hints:" -ForegroundColor White
-            Write-Host "  • 'origin' is the default name for your primary remote." -ForegroundColor DarkGray
-            Write-Host "  • You can have multiple remotes (e.g., 'origin' for your fork, 'upstream' for main repo)." -ForegroundColor DarkGray
-            Write-Host "  • Check 'git remote -v' to see current remotes and their URLs." -ForegroundColor DarkGray
+            Write-Host "  - 'origin' is the default name for your primary remote." -ForegroundColor DarkGray
+            Write-Host "  - You can have multiple remotes (e.g., 'origin' for your fork, 'upstream' for main repo)." -ForegroundColor DarkGray
+            Write-Host "  - Check 'git remote -v' to see current remotes and their URLs." -ForegroundColor DarkGray
             Write-Host ""
 
             Write-Host "--- Remote Management ---" -ForegroundColor Green
@@ -482,17 +482,17 @@ function Handle-RemoteMenu {
         switch ($remoteChoice) {
             '1' {
                 Write-Host ""
-                Write-Host "╔══════════════════════════════════════════════════════════════╗" -ForegroundColor Green
-                Write-Host "║                    git remote add                            ║" -ForegroundColor Green
-                Write-Host "╚══════════════════════════════════════════════════════════════╝" -ForegroundColor Green
+                Write-Host "+==============================================================+" -ForegroundColor Green
+                Write-Host "|                    git remote add                            |" -ForegroundColor Green
+                Write-Host "+==============================================================+" -ForegroundColor Green
                 Write-Host "  What it does : Links your local repository to a new remote repository." -ForegroundColor Cyan
                 Write-Host "  When to use  : When setting up a connection to GitHub/GitLab for the first time." -ForegroundColor Cyan
-                Write-Host "  Safe?        : Yes — establishes a connection, doesn't change code." -ForegroundColor Cyan
+                Write-Host "  Safe?        : Yes -- establishes a connection, doesn't change code." -ForegroundColor Cyan
                 Write-Host ""
                 Write-Host "  Hints:" -ForegroundColor White
-                Write-Host "  • Give it a meaningful name (e.g., 'origin' for your copy, 'upstream' for original)." -ForegroundColor DarkGray
-                Write-Host "  • Use the HTTPS or SSH URL provided by your Git host." -ForegroundColor DarkGray
-                Write-Host "  • After adding, you can 'git push -u <remote-name> <branch-name>'." -ForegroundColor DarkGray
+                Write-Host "  - Give it a meaningful name (e.g., 'origin' for your copy, 'upstream' for original)." -ForegroundColor DarkGray
+                Write-Host "  - Use the HTTPS or SSH URL provided by your Git host." -ForegroundColor DarkGray
+                Write-Host '  - After adding, use: git push -u [remote-name] [branch-name]' -ForegroundColor DarkGray
                 Write-Host ""
                 $name = Read-Host '--> Remote name (e.g. origin)'
                 $url  = Read-Host "--> Remote URL"
@@ -504,17 +504,17 @@ function Handle-RemoteMenu {
             }
             '2' {
                 Write-Host ""
-                Write-Host "╔══════════════════════════════════════════════════════════════╗" -ForegroundColor Green
-                Write-Host "║                  git remote set-url                          ║" -ForegroundColor Green
-                Write-Host "╚══════════════════════════════════════════════════════════════╝" -ForegroundColor Green
+                Write-Host "+==============================================================+" -ForegroundColor Green
+                Write-Host "|                  git remote set-url                          |" -ForegroundColor Green
+                Write-Host "+==============================================================+" -ForegroundColor Green
                 Write-Host "  What it does : Changes the URL of an existing remote connection." -ForegroundColor Cyan
                 Write-Host "  When to use  : If the remote repository's location has changed." -ForegroundColor Cyan
                 Write-Host "  Safe?        : Yes, but ensure the new URL is correct." -ForegroundColor Yellow
                 Write-Host ""
                 Write-Host "  Hints:" -ForegroundColor White
-                Write-Host "  • Useful when a repository is migrated to a new server or owner." -ForegroundColor DarkGray
-                Write-Host "  • Verify the new URL to avoid push/pull errors later." -ForegroundColor DarkGray
-                Write-Host "  • Can change both fetch and push URLs or just one specific." -ForegroundColor DarkGray
+                Write-Host "  - Useful when a repository is migrated to a new server or owner." -ForegroundColor DarkGray
+                Write-Host "  - Verify the new URL to avoid push/pull errors later." -ForegroundColor DarkGray
+                Write-Host "  - Can change both fetch and push URLs or just one specific." -ForegroundColor DarkGray
                 Write-Host ""
                 git remote -v | Out-Host; Write-Host ""
                 $name = Read-Host '--> Remote name to update (e.g. origin)'
@@ -527,22 +527,22 @@ function Handle-RemoteMenu {
             }
             '3' {
                 Write-Host ""
-                Write-Host "╔══════════════════════════════════════════════════════════════╗" -ForegroundColor Green
-                Write-Host "║                   git remote remove                          ║" -ForegroundColor Green
-                Write-Host "╚══════════════════════════════════════════════════════════════╝" -ForegroundColor Green
+                Write-Host "+==============================================================+" -ForegroundColor Green
+                Write-Host "|                   git remote remove                          |" -ForegroundColor Green
+                Write-Host "+==============================================================+" -ForegroundColor Green
                 Write-Host "  What it does : Deletes a remote connection from your local repository." -ForegroundColor Cyan
                 Write-Host "  When to use  : When a remote repository is no longer needed or has been deleted." -ForegroundColor Cyan
-                Write-Host "  Safe?        : CAREFUL — removes the link, may prevent pushing/pulling." -ForegroundColor Red
+                Write-Host "  Safe?        : CAREFUL -- removes the link, may prevent pushing/pulling." -ForegroundColor Red
                 Write-Host ""
                 Write-Host "  Hints:" -ForegroundColor White
-                Write-Host "  • Only removes the local reference, doesn't delete the remote repo itself." -ForegroundColor DarkGray
-                Write-Host "  • Ensure no active branches are tracking this remote before removal." -ForegroundColor DarkGray
-                Write-Host "  • You can always add the remote back later if needed." -ForegroundColor DarkGray
+                Write-Host "  - Only removes the local reference, doesn't delete the remote repo itself." -ForegroundColor DarkGray
+                Write-Host "  - Ensure no active branches are tracking this remote before removal." -ForegroundColor DarkGray
+                Write-Host "  - You can always add the remote back later if needed." -ForegroundColor DarkGray
                 Write-Host ""
                 git remote -v | Out-Host; Write-Host ""
                 $name = Read-Host "--> Remote name to remove"
                 if ($name) {
-                    $c = Read-Host "--> Remove remote '$name'? (y/n)"
+                    $c = Read-Host "--> Remove remote '$name'? [y/n]"
                     if ($c -eq 'y') {
                         git remote remove $name
                         $commandsUsed += "git remote remove $name"
@@ -554,17 +554,17 @@ function Handle-RemoteMenu {
             }
             '4' {
                 Write-Host ""
-                Write-Host "╔══════════════════════════════════════════════════════════════╗" -ForegroundColor Green
-                Write-Host "║                    git remote show                           ║" -ForegroundColor Green
-                Write-Host "╚══════════════════════════════════════════════════════════════╝" -ForegroundColor Green
+                Write-Host "+==============================================================+" -ForegroundColor Green
+                Write-Host "|                    git remote show                           |" -ForegroundColor Green
+                Write-Host "+==============================================================+" -ForegroundColor Green
                 Write-Host "  What it does : Displays detailed information about a specific remote." -ForegroundColor Cyan
                 Write-Host "  When to use  : To inspect the URLs, branches, and fetch configurations." -ForegroundColor Cyan
-                Write-Host "  Safe?        : Yes — read-only." -ForegroundColor Cyan
+                Write-Host "  Safe?        : Yes -- read-only." -ForegroundColor Cyan
                 Write-Host ""
                 Write-Host "  Hints:" -ForegroundColor White
-                Write-Host "  • Shows remote name, URL, tracked branches, and more." -ForegroundColor DarkGray
-                Write-Host "  • Helps debug issues with remote connections or branch tracking." -ForegroundColor DarkGray
-                Write-Host "  • Can run 'git remote show origin' (or other remote name)." -ForegroundColor DarkGray
+                Write-Host "  - Shows remote name, URL, tracked branches, and more." -ForegroundColor DarkGray
+                Write-Host "  - Helps debug issues with remote connections or branch tracking." -ForegroundColor DarkGray
+                Write-Host "  - Can run 'git remote show origin' (or other remote name)." -ForegroundColor DarkGray
                 Write-Host ""
                 $name = Read-Host '--> Remote name (e.g. origin)'
                 if ($name) {
@@ -645,17 +645,17 @@ while ($true) {
     switch ($choice) {
         '1' {
             Write-Host ""
-            Write-Host "╔══════════════════════════════════════════════════════════════╗" -ForegroundColor Green
-            Write-Host "║                       git init                               ║" -ForegroundColor Green
-            Write-Host "╚══════════════════════════════════════════════════════════════╝" -ForegroundColor Green
+            Write-Host "+==============================================================+" -ForegroundColor Green
+            Write-Host "|                       git init                               |" -ForegroundColor Green
+            Write-Host "+==============================================================+" -ForegroundColor Green
             Write-Host "  What it does : Creates a new, empty Git repository in the current directory." -ForegroundColor Cyan
             Write-Host "  When to use  : When starting a brand new project that you want to version control." -ForegroundColor Cyan
-            Write-Host "  Safe?        : Yes — it just creates a hidden .git folder; no data is lost." -ForegroundColor Cyan
+            Write-Host "  Safe?        : Yes -- it just creates a hidden .git folder; no data is lost." -ForegroundColor Cyan
             Write-Host ""
             Write-Host "  Hints:" -ForegroundColor White
-            Write-Host "  • Run this command in the root folder of your project." -ForegroundColor DarkGray
-            Write-Host "  • Avoid initializing a Git repo inside another existing Git repo." -ForegroundColor DarkGray
-            Write-Host "  • After init, use 'git add' and 'git commit' to start tracking files." -ForegroundColor DarkGray
+            Write-Host "  - Run this command in the root folder of your project." -ForegroundColor DarkGray
+            Write-Host "  - Avoid initializing a Git repo inside another existing Git repo." -ForegroundColor DarkGray
+            Write-Host "  - After init, use 'git add' and 'git commit' to start tracking files." -ForegroundColor DarkGray
             Write-Host ""
 
             if (Test-Path ".git") {
@@ -673,18 +673,18 @@ while ($true) {
 
         '2' {
             Write-Host ""
-            Write-Host "╔══════════════════════════════════════════════════════════════╗" -ForegroundColor Green
-            Write-Host "║                    terraform fmt                             ║" -ForegroundColor Green
-            Write-Host "╚══════════════════════════════════════════════════════════════╝" -ForegroundColor Green
+            Write-Host "+==============================================================+" -ForegroundColor Green
+            Write-Host "|                    terraform fmt                             |" -ForegroundColor Green
+            Write-Host "+==============================================================+" -ForegroundColor Green
             Write-Host "  What it does : Formats all Terraform .tf files to a canonical style." -ForegroundColor Cyan
             Write-Host "  When to use  : Before committing Terraform code to ensure consistent formatting." -ForegroundColor Cyan
-            Write-Host "  Safe?        : Yes — only reformats whitespace and indentation; no functional changes." -ForegroundColor Cyan
+            Write-Host "  Safe?        : Yes -- only reformats whitespace and indentation; no functional changes." -ForegroundColor Cyan
             Write-Host ""
             Write-Host "  Hints:" -ForegroundColor White
-            Write-Host "  • Requires Terraform CLI to be installed and available in your PATH." -ForegroundColor DarkGray
-            Write-Host "  • Run this command from the root of your Terraform module." -ForegroundColor DarkGray
-            Write-Host "  • Use 'terraform fmt -check' to only validate formatting without changing files." -ForegroundColor DarkGray
-            Write-Host "  • Improves code readability and reduces merge conflicts related to formatting." -ForegroundColor DarkGray
+            Write-Host "  - Requires Terraform CLI to be installed and available in your PATH." -ForegroundColor DarkGray
+            Write-Host "  - Run this command from the root of your Terraform module." -ForegroundColor DarkGray
+            Write-Host "  - Use 'terraform fmt -check' to only validate formatting without changing files." -ForegroundColor DarkGray
+            Write-Host "  - Improves code readability and reduces merge conflicts related to formatting." -ForegroundColor DarkGray
             Write-Host ""
 
             if (Get-Command terraform -ErrorAction SilentlyContinue) {
@@ -697,41 +697,41 @@ while ($true) {
 
         '3' {
             Write-Host ""
-            Write-Host "╔══════════════════════════════════════════════════════════════╗" -ForegroundColor Green
-            Write-Host "║                   git add . && git commit                    ║" -ForegroundColor Green
-            Write-Host "╚══════════════════════════════════════════════════════════════╝" -ForegroundColor Green
+            Write-Host "+==============================================================+" -ForegroundColor Green
+            Write-Host '|                   git add . && git commit                    |' -ForegroundColor Green
+            Write-Host "+==============================================================+" -ForegroundColor Green
             Write-Host "  What it does : Stages all current changes and creates the initial commit." -ForegroundColor Cyan
             Write-Host "  When to use  : After 'git init' to create the very first save point of your project." -ForegroundColor Cyan
             Write-Host "  Safe?        : Yes, for initial commit. Subsequent commits override history." -ForegroundColor Yellow
             Write-Host ""
             Write-Host "  Hints:" -ForegroundColor White
-            Write-Host "  • This command uses 'git add .' to stage all files." -ForegroundColor DarkGray
-            Write-Host "  • Write a meaningful commit message, even if it's "Initial commit"." -ForegroundColor DarkGray
-            Write-Host "  • This commit forms the foundation of your repository's history." -ForegroundColor DarkGray
+            Write-Host "  - This command uses 'git add .' to stage all files." -ForegroundColor DarkGray
+            Write-Host '  - Write a meaningful commit message, even if it is Initial commit.' -ForegroundColor DarkGray
+            Write-Host "  - This commit forms the foundation of your repository's history." -ForegroundColor DarkGray
             Write-Host ""
-            $c = Read-Host "--> Stage all files and create 'Initial commit'? (y/n)"
+            $c = Read-Host '--> Stage all files and create Initial commit? (y/n)'
             if ($c -eq 'y') {
                 git add .
                 $commandsUsed += "git add ."
                 git commit -m "Initial commit"
-                $commandsUsed += "git commit -m '"Initial commit"'"
+                $commandsUsed += "git commit -m 'Initial commit'"
             } else { Write-Host "--> Canceled." -ForegroundColor DarkGray }
         }
 
         '4' {
             Write-Host ""
-            Write-Host "╔══════════════════════════════════════════════════════════════╗" -ForegroundColor Green
-            Write-Host "║                       git status                             ║" -ForegroundColor Green
-            Write-Host "╚══════════════════════════════════════════════════════════════╝" -ForegroundColor Green
+            Write-Host "+==============================================================+" -ForegroundColor Green
+            Write-Host "|                       git status                             |" -ForegroundColor Green
+            Write-Host "+==============================================================+" -ForegroundColor Green
             Write-Host "  What it does : Shows the state of your working directory and staging area." -ForegroundColor Cyan
             Write-Host "  When to use  : Anytime to see what's changed, staged, or untracked." -ForegroundColor Cyan
-            Write-Host "  Safe?        : Yes — read-only, makes no changes to your repository." -ForegroundColor Cyan
+            Write-Host "  Safe?        : Yes -- read-only, makes no changes to your repository." -ForegroundColor Cyan
             Write-Host ""
             Write-Host "  Hints:" -ForegroundColor White
-            Write-Host "  • Run this command frequently, especially before making a commit." -ForegroundColor DarkGray
-            Write-Host "  • Files in red are modified but unstaged; files in green are staged." -ForegroundColor DarkGray
-            Write-Host "  • '??' prefix indicates untracked files (not yet added to Git)." -ForegroundColor DarkGray
-            Write-Host "  • Helps keep track of your progress and identify files for committing." -ForegroundColor DarkGray
+            Write-Host "  - Run this command frequently, especially before making a commit." -ForegroundColor DarkGray
+            Write-Host "  - Files in red are modified but unstaged; files in green are staged." -ForegroundColor DarkGray
+            Write-Host "  - '??' prefix indicates untracked files (not yet added to Git)." -ForegroundColor DarkGray
+            Write-Host "  - Helps keep track of your progress and identify files for committing." -ForegroundColor DarkGray
             Write-Host ""
             git status
             $commandsUsed += "git status"
@@ -739,24 +739,24 @@ while ($true) {
 
         '5' {
             Write-Host ""
-            Write-Host "╔══════════════════════════════════════════════════════════════╗" -ForegroundColor Green
-            Write-Host "║                git add <file> && git commit                  ║" -ForegroundColor Green
-            Write-Host "╚══════════════════════════════════════════════════════════════╝" -ForegroundColor Green
+            Write-Host "+==============================================================+" -ForegroundColor Green
+            Write-Host '|                git add <file> && git commit                  |' -ForegroundColor Green
+            Write-Host "+==============================================================+" -ForegroundColor Green
             Write-Host "  What it does : Stages a specific file and creates a commit." -ForegroundColor Cyan
             Write-Host "  When to use  : For focused changes affecting only one file." -ForegroundColor Cyan
             Write-Host "  Safe?        : Yes, if you intend to commit that file's changes." -ForegroundColor Cyan
             Write-Host ""
             Write-Host "  Hints:" -ForegroundColor White
-            Write-Host "  • Use tab-completion for the file path to avoid typos." -ForegroundColor DarkGray
-            Write-Host "  • The commit message should clearly explain the changes made to that file." -ForegroundColor DarkGray
-            Write-Host "  • Useful for isolating changes and creating atomic commits." -ForegroundColor DarkGray
+            Write-Host "  - Use tab-completion for the file path to avoid typos." -ForegroundColor DarkGray
+            Write-Host "  - The commit message should clearly explain the changes made to that file." -ForegroundColor DarkGray
+            Write-Host "  - Useful for isolating changes and creating atomic commits." -ForegroundColor DarkGray
             Write-Host ""
             $fp = Read-Host "--> File path to add and commit"
             if ($fp) {
                 if (-not (Test-Path $fp)) {
                     Write-Host "!! File '$fp' not found. Please enter a valid path." -ForegroundColor Red
                 } else {
-                    $msg = Read-Host "--> Commit message (leave blank for default: 'Update $fp')"
+                    $msg = Read-Host "--> Commit message [leave blank for default: 'Update $fp']"
                     if ([string]::IsNullOrWhiteSpace($msg)) { $msg = "Update $fp" }
                     git add $fp
                     $commandsUsed += "git add $fp"
@@ -768,24 +768,24 @@ while ($true) {
 
         '6' {
             Write-Host ""
-            Write-Host "╔══════════════════════════════════════════════════════════════╗" -ForegroundColor Green
-            Write-Host "║               git add <folder> && git commit                 ║" -ForegroundColor Green
-            Write-Host "╚══════════════════════════════════════════════════════════════╝" -ForegroundColor Green
+            Write-Host "+==============================================================+" -ForegroundColor Green
+            Write-Host '|               git add <folder> && git commit                 |' -ForegroundColor Green
+            Write-Host "+==============================================================+" -ForegroundColor Green
             Write-Host "  What it does : Stages all changes within a specific folder and creates a commit." -ForegroundColor Cyan
             Write-Host "  When to use  : When a feature or fix spans multiple files within a single folder." -ForegroundColor Cyan
             Write-Host "  Safe?        : Yes, if you intend to commit all changes in that folder." -ForegroundColor Cyan
             Write-Host ""
             Write-Host "  Hints:" -ForegroundColor White
-            Write-Host "  • Git tracks files, not folders directly. This will stage all files in the folder." -ForegroundColor DarkGray
-            Write-Host "  • The commit message should describe the collective changes in the folder." -ForegroundColor DarkGray
-            Write-Host "  • Use 'git status' before to confirm all intended changes are within this folder." -ForegroundColor DarkGray
+            Write-Host "  - Git tracks files, not folders directly. This will stage all files in the folder." -ForegroundColor DarkGray
+            Write-Host "  - The commit message should describe the collective changes in the folder." -ForegroundColor DarkGray
+            Write-Host "  - Use 'git status' before to confirm all intended changes are within this folder." -ForegroundColor DarkGray
             Write-Host ""
             $fp = Read-Host "--> Folder path to add and commit"
             if ($fp) {
                 if (-not (Test-Path $fp -PathType Container)) {
                     Write-Host "!! Folder '$fp' not found. Please enter a valid path." -ForegroundColor Red
                 } else {
-                    $msg = Read-Host "--> Commit message (leave blank for default: 'Update folder $fp')"
+                    $msg = Read-Host "--> Commit message [leave blank for default: 'Update folder $fp']"
                     if ([string]::IsNullOrWhiteSpace($msg)) { $msg = "Update folder $fp" }
                     git add $fp
                     $commandsUsed += "git add $fp"
@@ -797,21 +797,21 @@ while ($true) {
 
         '7' {
             Write-Host ""
-            Write-Host "╔══════════════════════════════════════════════════════════════╗" -ForegroundColor Green
-            Write-Host "║                     git add . && git commit                  ║" -ForegroundColor Green
-            Write-Host "╚══════════════════════════════════════════════════════════════╝" -ForegroundColor Green
+            Write-Host "+==============================================================+" -ForegroundColor Green
+            Write-Host '|                     git add . && git commit                  |' -ForegroundColor Green
+            Write-Host "+==============================================================+" -ForegroundColor Green
             Write-Host "  What it does : Stages ALL modified and new files, then creates a commit." -ForegroundColor Cyan
             Write-Host "  When to use  : For collective changes that logically belong together and you're sure about." -ForegroundColor Cyan
-            Write-Host "  Safe?        : Use with caution — ensures *all* changes are included. Check 'git status' first." -ForegroundColor Yellow
+            Write-Host "  Safe?        : Use with caution -- ensures *all* changes are included. Check 'git status' first." -ForegroundColor Yellow
             Write-Host ""
             Write-Host "  Hints:" -ForegroundColor White
-            Write-Host "  • Always run 'git status' immediately before this to review all changes." -ForegroundColor DarkGray
-            Write-Host "  • Avoid committing unrelated changes together (mixes concerns, harder to revert)." -ForegroundColor DarkGray
-            Write-Host "  • A clear, concise commit message is crucial for documenting these broad changes." -ForegroundColor DarkGray
+            Write-Host "  - Always run 'git status' immediately before this to review all changes." -ForegroundColor DarkGray
+            Write-Host "  - Avoid committing unrelated changes together (mixes concerns, harder to revert)." -ForegroundColor DarkGray
+            Write-Host "  - A clear, concise commit message is crucial for documenting these broad changes." -ForegroundColor DarkGray
             Write-Host ""
             $c = Read-Host '--> Stage ALL changes and commit? (y/n)'
             if ($c -eq 'y') {
-                $msg = Read-Host "--> Commit message (leave blank for default: 'General update')"
+                $msg = Read-Host "--> Commit message [leave blank for default: 'General update']"
                 if ([string]::IsNullOrWhiteSpace($msg)) { $msg = "General update" }
                 git add .
                 $commandsUsed += "git add ."
@@ -822,18 +822,18 @@ while ($true) {
 
         '8' {
             Write-Host ""
-            Write-Host "╔══════════════════════════════════════════════════════════════╗" -ForegroundColor Green
-            Write-Host "║                        git diff                              ║" -ForegroundColor Green
-            Write-Host "╚══════════════════════════════════════════════════════════════╝" -ForegroundColor Green
+            Write-Host "+==============================================================+" -ForegroundColor Green
+            Write-Host "|                        git diff                              |" -ForegroundColor Green
+            Write-Host "+==============================================================+" -ForegroundColor Green
             Write-Host "  What it does : Shows exactly what changed, line by line, between versions." -ForegroundColor Cyan
             Write-Host "  When to use  : Before committing, to review your own work; or to compare branches." -ForegroundColor Cyan
-            Write-Host "  Safe?        : Yes — read-only, makes no changes to your repository." -ForegroundColor Cyan
+            Write-Host "  Safe?        : Yes -- read-only, makes no changes to your repository." -ForegroundColor Cyan
             Write-Host ""
             Write-Host "  Hints:" -ForegroundColor White
-            Write-Host "  • Red lines show removed content, green lines show added content." -ForegroundColor DarkGray
-            Write-Host "  • Press 'q' to exit the diff view in the terminal." -ForegroundColor DarkGray
-            Write-Host "  • Use 'git diff --staged' to see changes already moved to the staging area." -ForegroundColor DarkGray
-            Write-Host "  • Essential for code review and understanding changes." -ForegroundColor DarkGray
+            Write-Host "  - Red lines show removed content, green lines show added content." -ForegroundColor DarkGray
+            Write-Host "  - Press 'q' to exit the diff view in the terminal." -ForegroundColor DarkGray
+            Write-Host "  - Use 'git diff --staged' to see changes already moved to the staging area." -ForegroundColor DarkGray
+            Write-Host "  - Essential for code review and understanding changes." -ForegroundColor DarkGray
             Write-Host ""
             Write-Host "a. Unstaged changes (working tree)" -ForegroundColor Yellow
             Write-Host "b. Staged changes (ready to commit)"
@@ -866,18 +866,18 @@ while ($true) {
 
         '9' {
             Write-Host ""
-            Write-Host "╔══════════════════════════════════════════════════════════════╗" -ForegroundColor Green
-            Write-Host "║              git checkout -- / git reset HEAD                ║" -ForegroundColor Green
-            Write-Host "╚══════════════════════════════════════════════════════════════╝" -ForegroundColor Green
+            Write-Host "+==============================================================+" -ForegroundColor Green
+            Write-Host "|              git checkout -- / git reset HEAD                |" -ForegroundColor Green
+            Write-Host "+==============================================================+" -ForegroundColor Green
             Write-Host "  What it does : Discards uncommitted changes in your working directory or unstages files." -ForegroundColor Cyan
             Write-Host "  When to use  : When you want to revert changes you've made but haven't committed yet." -ForegroundColor Cyan
-            Write-Host "  Safe?        : CAREFUL — discarded changes cannot be easily recovered." -ForegroundColor Red
+            Write-Host "  Safe?        : CAREFUL -- discarded changes cannot be easily recovered." -ForegroundColor Red
             Write-Host ""
             Write-Host "  Hints:" -ForegroundColor White
-            Write-Host "  • Consider using 'git stash' instead if you might want changes back later." -ForegroundColor DarkGray
-            Write-Host "  • Always run 'git status' first to clearly understand what will be discarded." -ForegroundColor DarkGray
-            Write-Host "  • 'git checkout -- <file>' discards changes to a specific file." -ForegroundColor DarkGray
-            Write-Host "  • 'git reset HEAD <file>' unstages changes, but keeps them in your working directory." -ForegroundColor DarkGray
+            Write-Host "  - Consider using 'git stash' instead if you might want changes back later." -ForegroundColor DarkGray
+            Write-Host "  - Always run 'git status' first to clearly understand what will be discarded." -ForegroundColor DarkGray
+            Write-Host '  - git checkout -- [file] discards changes to a specific file.' -ForegroundColor DarkGray
+            Write-Host '  - git reset HEAD [file] unstages changes, keeps them in working directory.' -ForegroundColor DarkGray
             Write-Host ""
             git status | Out-Host; Write-Host ""
             Write-Host "a. Discard ALL uncommitted changes" -ForegroundColor Yellow
@@ -902,7 +902,7 @@ while ($true) {
                         if (-not (Test-Path $fn)) {
                             Write-Host "!! File '$fn' not found. Please enter a valid path." -ForegroundColor Red
                         } else {
-                            $c = Read-Host "--> Discard changes in '$fn'? (y/n)"
+                            $c = Read-Host "--> Discard changes in '$fn'? [y/n]"
                             if ($c -eq 'y') {
                                 git checkout -- $fn
                                 $commandsUsed += "git checkout -- $fn"
@@ -920,7 +920,7 @@ while ($true) {
                         if (-not (Test-Path $fn)) {
                             Write-Host "!! File '$fn' not found. Please enter a valid path." -ForegroundColor Red
                         } else {
-                            $c = Read-Host "--> Unstage '$fn'? (y/n)"
+                            $c = Read-Host "--> Unstage '$fn'? [y/n]"
                             if ($c -eq 'y') {
                                 git reset HEAD $fn
                                 $commandsUsed += "git reset HEAD $fn"
@@ -937,18 +937,18 @@ while ($true) {
 
         '10' {
             Write-Host ""
-            Write-Host "╔══════════════════════════════════════════════════════════════╗" -ForegroundColor Green
-            Write-Host "║                          git clone                           ║" -ForegroundColor Green
-            Write-Host "╚══════════════════════════════════════════════════════════════╝" -ForegroundColor Green
+            Write-Host "+==============================================================+" -ForegroundColor Green
+            Write-Host "|                          git clone                           |" -ForegroundColor Green
+            Write-Host "+==============================================================+" -ForegroundColor Green
             Write-Host "  What it does : Downloads a remote repository to your local machine." -ForegroundColor Cyan
             Write-Host "  When to use  : When you're starting work on an existing project for the first time." -ForegroundColor Cyan
-            Write-Host "  Safe?        : Yes — read-only from the remote; nothing on remote is changed." -ForegroundColor Cyan
+            Write-Host "  Safe?        : Yes -- read-only from the remote; nothing on remote is changed." -ForegroundColor Cyan
             Write-Host ""
             Write-Host "  Hints:" -ForegroundColor White
-            Write-Host "  • URL format: https://github.com/user/repo.git or git@github.com:user/repo.git" -ForegroundColor DarkGray
-            Write-Host "  • After cloning, use 'cd' into the new folder, then 'npm install' / 'pip install', etc." -ForegroundColor DarkGray
-            Write-Host "  • For private repositories, ensure you're authenticated (e.g., 'gh auth login' or SSH key)." -ForegroundColor DarkGray
-            Write-Host "  • Use '--depth 1' for shallow clones if you only need the latest commit history." -ForegroundColor DarkGray
+            Write-Host "  - URL format: https://github.com/user/repo.git or git@github.com:user/repo.git" -ForegroundColor DarkGray
+            Write-Host "  - After cloning, use 'cd' into the new folder, then 'npm install' / 'pip install', etc." -ForegroundColor DarkGray
+            Write-Host "  - For private repositories, ensure you're authenticated (e.g., 'gh auth login' or SSH key)." -ForegroundColor DarkGray
+            Write-Host "  - Use '--depth 1' for shallow clones if you only need the latest commit history." -ForegroundColor DarkGray
             Write-Host ""
 
             $repoUrl = Read-Host "--> Repository URL to clone"
@@ -964,7 +964,7 @@ while ($true) {
                 if ($LASTEXITCODE -eq 0) {
                     Write-Host "--> Repository cloned successfully." -ForegroundColor Green
                     if ($cloneDir) {
-                        $goIn = Read-Host "--> cd into '$cloneDir'? (y/n)"
+                        $goIn = Read-Host "--> cd into '$cloneDir'? [y/n]"
                         if ($goIn -eq 'y') {
                             Set-Location $cloneDir
                             $commandsUsed += "cd $cloneDir"
@@ -979,18 +979,18 @@ while ($true) {
 
         '11' {
             Write-Host ""
-            Write-Host "╔══════════════════════════════════════════════════════════════╗" -ForegroundColor Green
-            Write-Host "║                        git push                              ║" -ForegroundColor Green
-            Write-Host "╚══════════════════════════════════════════════════════════════╝" -ForegroundColor Green
+            Write-Host "+==============================================================+" -ForegroundColor Green
+            Write-Host "|                        git push                              |" -ForegroundColor Green
+            Write-Host "+==============================================================+" -ForegroundColor Green
             Write-Host "  What it does : Uploads your local commits to the remote repository." -ForegroundColor Cyan
             Write-Host "  When to use  : After committing changes locally, to share your work with others." -ForegroundColor Cyan
             Write-Host "  Safe?        : Yes, for normal pushes. Force pushing can rewrite history (be careful!)." -ForegroundColor Yellow
             Write-Host ""
             Write-Host "  Hints:" -ForegroundColor White
-            Write-Host "  • Always pull the latest changes before pushing to avoid conflicts." -ForegroundColor DarkGray
-            Write-Host "  • Use '-u origin <branch>' to set the upstream tracking branch for new branches." -ForegroundColor DarkGray
-            Write-Host "  • '--force' or '--force-with-lease' should be used with extreme caution on shared branches." -ForegroundColor DarkGray
-            Write-Host "  • Pushes local branches to their corresponding remote branches." -ForegroundColor DarkGray
+            Write-Host "  - Always pull the latest changes before pushing to avoid conflicts." -ForegroundColor DarkGray
+            Write-Host '  - Use -u origin [branch] to set the upstream tracking branch for new branches.' -ForegroundColor DarkGray
+            Write-Host "  - '--force' or '--force-with-lease' should be used with extreme caution on shared branches." -ForegroundColor DarkGray
+            Write-Host "  - Pushes local branches to their corresponding remote branches." -ForegroundColor DarkGray
             Write-Host ""
 
             if (Check-Remote) {
@@ -1018,7 +1018,7 @@ while ($true) {
                         }
                     }
                     default {
-                        $c = Read-Host "--> Push current branch '$currentBranch' to remote? (y/n)"
+                        $c = Read-Host "--> Push current branch '$currentBranch' to remote? [y/n]"
                         if ($c -eq 'y') {
                             git push
                             $commandsUsed += "git push"
@@ -1032,18 +1032,18 @@ while ($true) {
 
         '12' {
             Write-Host ""
-            Write-Host "╔══════════════════════════════════════════════════════════════╗" -ForegroundColor Green
-            Write-Host "║                        git pull                              ║" -ForegroundColor Green
-            Write-Host "╚══════════════════════════════════════════════════════════════╝" -ForegroundColor Green
+            Write-Host "+==============================================================+" -ForegroundColor Green
+            Write-Host "|                        git pull                              |" -ForegroundColor Green
+            Write-Host "+==============================================================+" -ForegroundColor Green
             Write-Host "  What it does : Downloads changes from a remote repository and merges them into your current branch." -ForegroundColor Cyan
             Write-Host "  When to use  : To synchronize your local repository with changes made by teammates." -ForegroundColor Cyan
             Write-Host "  Safe?        : Yes, for most cases. Conflicts may require manual resolution." -ForegroundColor Yellow
             Write-Host ""
             Write-Host "  Hints:" -ForegroundColor White
-            Write-Host "  • Always pull before starting work each day or before pushing your own changes." -ForegroundColor DarkGray
-            Write-Host "  • 'git pull' is essentially 'git fetch' followed by 'git merge'." -ForegroundColor DarkGray
-            Write-Host "  • Be prepared to resolve merge conflicts if your local changes overlap with remote changes." -ForegroundColor DarkGray
-            Write-Host "  • Helps keep your local branch up-to-date with the remote." -ForegroundColor DarkGray
+            Write-Host "  - Always pull before starting work each day or before pushing your own changes." -ForegroundColor DarkGray
+            Write-Host "  - 'git pull' is essentially 'git fetch' followed by 'git merge'." -ForegroundColor DarkGray
+            Write-Host "  - Be prepared to resolve merge conflicts if your local changes overlap with remote changes." -ForegroundColor DarkGray
+            Write-Host "  - Helps keep your local branch up-to-date with the remote." -ForegroundColor DarkGray
             Write-Host ""
 
             if (Check-Remote) {
@@ -1059,17 +1059,17 @@ while ($true) {
 
         '13' {
             Write-Host ""
-            Write-Host "╔══════════════════════════════════════════════════════════════╗" -ForegroundColor Green
-            Write-Host "║                        git fetch                             ║" -ForegroundColor Green
-            Write-Host "╚══════════════════════════════════════════════════════════════╝" -ForegroundColor Green
+            Write-Host "+==============================================================+" -ForegroundColor Green
+            Write-Host "|                        git fetch                             |" -ForegroundColor Green
+            Write-Host "+==============================================================+" -ForegroundColor Green
             Write-Host "  What it does : Downloads changes from the remote repository but DOES NOT merge them." -ForegroundColor Cyan
             Write-Host "  When to use  : To see what changes have occurred on the remote before deciding to merge." -ForegroundColor Cyan
-            Write-Host "  Safe?        : Yes — read-only, your local code and branches remain untouched." -ForegroundColor Cyan
+            Write-Host "  Safe?        : Yes -- read-only, your local code and branches remain untouched." -ForegroundColor Cyan
             Write-Host ""
             Write-Host "  Hints:" -ForegroundColor White
-            Write-Host "  • Use 'git log origin/main' (assuming 'main' is your main branch) after fetching to inspect changes." -ForegroundColor DarkGray
-            Write-Host "  • '--prune' option removes references to remote-tracking branches that no longer exist on the remote." -ForegroundColor DarkGray
-            Write-Host "  • Allows you to review incoming changes without applying them, offering more control than 'git pull'." -ForegroundColor DarkGray
+            Write-Host "  - Use 'git log origin/main' (assuming 'main' is your main branch) after fetching to inspect changes." -ForegroundColor DarkGray
+            Write-Host "  - '--prune' option removes references to remote-tracking branches that no longer exist on the remote." -ForegroundColor DarkGray
+            Write-Host "  - Allows you to review incoming changes without applying them, offering more control than 'git pull'." -ForegroundColor DarkGray
             Write-Host ""
 
             if (Check-Remote) {
@@ -1109,18 +1109,18 @@ while ($true) {
 
         '16' {
             Write-Host ""
-            Write-Host "╔══════════════════════════════════════════════════════════════╗" -ForegroundColor Green
-            Write-Host "║                         git log                              ║" -ForegroundColor Green
-            Write-Host "╚══════════════════════════════════════════════════════════════╝" -ForegroundColor Green
+            Write-Host "+==============================================================+" -ForegroundColor Green
+            Write-Host "|                         git log                              |" -ForegroundColor Green
+            Write-Host "+==============================================================+" -ForegroundColor Green
             Write-Host "  What it does : Displays the commit history of your repository." -ForegroundColor Cyan
             Write-Host "  When to use  : To review past changes, find specific commits, or understand branch lineage." -ForegroundColor Cyan
-            Write-Host "  Safe?        : Yes — read-only, makes no changes to your repository." -ForegroundColor Cyan
+            Write-Host "  Safe?        : Yes -- read-only, makes no changes to your repository." -ForegroundColor Cyan
             Write-Host ""
             Write-Host "  Hints:" -ForegroundColor White
-            Write-Host "  • Use '--oneline' for a compact, single-line summary of each commit." -ForegroundColor DarkGray
-            Write-Host "  • '--graph' visualizes the branch and merge history with ASCII art." -ForegroundColor DarkGray
-            Write-Host "  • Press 'q' to exit the log view." -ForegroundColor DarkGray
-            Write-Host "  • Each commit has a unique hash (SHA-1) that identifies it." -ForegroundColor DarkGray
+            Write-Host "  - Use '--oneline' for a compact, single-line summary of each commit." -ForegroundColor DarkGray
+            Write-Host "  - '--graph' visualizes the branch and merge history with ASCII art." -ForegroundColor DarkGray
+            Write-Host "  - Press 'q' to exit the log view." -ForegroundColor DarkGray
+            Write-Host "  - Each commit has a unique hash (SHA-1) that identifies it." -ForegroundColor DarkGray
             Write-Host ""
 
             Write-Host "a. Graph view (compact, with branch history)" -ForegroundColor Yellow
@@ -1146,23 +1146,23 @@ while ($true) {
 
         '17' {
             Write-Host ""
-            Write-Host "╔══════════════════════════════════════════════════════════════╗" -ForegroundColor Green
-            Write-Host "║                       git stash                              ║" -ForegroundColor Green
-            Write-Host "╚══════════════════════════════════════════════════════════════╝" -ForegroundColor Green
+            Write-Host "+==============================================================+" -ForegroundColor Green
+            Write-Host "|                       git stash                              |" -ForegroundColor Green
+            Write-Host "+==============================================================+" -ForegroundColor Green
             Write-Host "  What it does : Temporarily saves uncommitted changes and reverts your working directory." -ForegroundColor Cyan
             Write-Host "  When to use  : When you need to switch branches quickly but aren't ready to commit your current work." -ForegroundColor Cyan
-            Write-Host "  Safe?        : Yes — saves your changes in a hidden area, but conflicts can occur on apply." -ForegroundColor Yellow
+            Write-Host "  Safe?        : Yes -- saves your changes in a hidden area, but conflicts can occur on apply." -ForegroundColor Yellow
             Write-Host ""
             Write-Host "  Hints:" -ForegroundColor White
-            Write-Host "  • 'stash' acts like a stack (Last In, First Out) for your changes." -ForegroundColor DarkGray
-            Write-Host "  • You can list stashes with 'git stash list' and give them names." -ForegroundColor DarkGray
-            Write-Host "  • Stashed changes include both staged and unstaged modifications." -ForegroundColor DarkGray
-            Write-Host "  • Helps keep your working directory clean when switching context." -ForegroundColor DarkGray
+            Write-Host "  - 'stash' acts like a stack (Last In, First Out) for your changes." -ForegroundColor DarkGray
+            Write-Host "  - You can list stashes with 'git stash list' and give them names." -ForegroundColor DarkGray
+            Write-Host "  - Stashed changes include both staged and unstaged modifications." -ForegroundColor DarkGray
+            Write-Host "  - Helps keep your working directory clean when switching context." -ForegroundColor DarkGray
             Write-Host ""
 
             $c = Read-Host '--> Stash current uncommitted changes? (y/n)'
             if ($c -eq 'y') {
-                $stashMessage = Read-Host "--> Optional: Enter a message for this stash (e.g., 'WIP: login form')"
+                $stashMessage = Read-Host "--> Optional: Enter a message for this stash [e.g., 'WIP: login form']"
                 if ([string]::IsNullOrWhiteSpace($stashMessage)) {
                     git stash
                     $commandsUsed += "git stash"
@@ -1178,18 +1178,18 @@ while ($true) {
 
         '18' {
             Write-Host ""
-            Write-Host "╔══════════════════════════════════════════════════════════════╗" -ForegroundColor Green
-            Write-Host "║                     git stash pop / apply                    ║" -ForegroundColor Green
-            Write-Host "╚══════════════════════════════════════════════════════════════╝" -ForegroundColor Green
+            Write-Host "+==============================================================+" -ForegroundColor Green
+            Write-Host "|                     git stash pop / apply                    |" -ForegroundColor Green
+            Write-Host "+==============================================================+" -ForegroundColor Green
             Write-Host "  What it does : Restores previously stashed changes to your working directory." -ForegroundColor Cyan
             Write-Host "  When to use  : After completing other tasks, to return to your saved work." -ForegroundColor Cyan
             Write-Host "  Safe?        : Yes, but conflicting changes might require manual resolution." -ForegroundColor Yellow
             Write-Host ""
             Write-Host "  Hints:" -ForegroundColor White
-            Write-Host "  • 'pop' removes the stash from the list after applying; 'apply' keeps it." -ForegroundColor DarkGray
-            Write-Host "  • Conflicts can occur if the code has changed significantly since stashing." -ForegroundColor DarkGray
-            Write-Host "  • Use 'git stash list' to see all available stashes and their indices." -ForegroundColor DarkGray
-            Write-Host "  • After applying, review changes with 'git status' and 'git diff'." -ForegroundColor DarkGray
+            Write-Host "  - 'pop' removes the stash from the list after applying; 'apply' keeps it." -ForegroundColor DarkGray
+            Write-Host "  - Conflicts can occur if the code has changed significantly since stashing." -ForegroundColor DarkGray
+            Write-Host "  - Use 'git stash list' to see all available stashes and their indices." -ForegroundColor DarkGray
+            Write-Host "  - After applying, review changes with 'git status' and 'git diff'." -ForegroundColor DarkGray
             Write-Host ""
 
             git stash list | Out-Host; Write-Host ""
@@ -1205,7 +1205,7 @@ while ($true) {
                     Write-Host "--> Latest stash applied." -ForegroundColor Green
                 }
                 'c' {
-                    $idx = Read-Host "--> Stash index to apply (e.g. 0 for 'stash@{0}')"
+                    $idx = Read-Host "--> Stash index to apply [e.g. 0 for 'stash@{0}']"
                     if ([string]::IsNullOrWhiteSpace($idx)) {
                         Write-Host "!! Stash index required." -ForegroundColor Red
                     } elseif ($idx -match "^\d+$") {
@@ -1236,25 +1236,25 @@ while ($true) {
 
         '20' {
             Write-Host ""
-            Write-Host "╔══════════════════════════════════════════════════════════════╗" -ForegroundColor Green
-            Write-Host "║                        git merge                             ║" -ForegroundColor Green
-            Write-Host "╚══════════════════════════════════════════════════════════════╝" -ForegroundColor Green
+            Write-Host "+==============================================================+" -ForegroundColor Green
+            Write-Host "|                        git merge                             |" -ForegroundColor Green
+            Write-Host "+==============================================================+" -ForegroundColor Green
             Write-Host "  What it does : Combines the history of another branch into your current branch." -ForegroundColor Cyan
             Write-Host "  When to use  : After a feature is complete and reviewed, to integrate it into a main branch." -ForegroundColor Cyan
             Write-Host "  Safe?        : Yes, but be prepared to resolve merge conflicts if branches diverge." -ForegroundColor Yellow
             Write-Host ""
             Write-Host "  Hints:" -ForegroundColor White
-            Write-Host "  • Always pull the latest changes from the target branch before merging." -ForegroundColor DarkGray
-            Write-Host "  • If conflicts arise, Git will pause the merge, allowing you to resolve them manually." -ForegroundColor DarkGray
-            Write-Host "  • Use 'git merge --abort' to cancel a merge with conflicts." -ForegroundColor DarkGray
-            Write-Host "  • Creates a new 'merge commit' by default, showing where histories combine." -ForegroundColor DarkGray
+            Write-Host "  - Always pull the latest changes from the target branch before merging." -ForegroundColor DarkGray
+            Write-Host "  - If conflicts arise, Git will pause the merge, allowing you to resolve them manually." -ForegroundColor DarkGray
+            Write-Host "  - Use 'git merge --abort' to cancel a merge with conflicts." -ForegroundColor DarkGray
+            Write-Host "  - Creates a new 'merge commit' by default, showing where histories combine." -ForegroundColor DarkGray
             Write-Host ""
 
             if (Check-Remote) {
                 Write-Host "--> Available branches (local):"; git branch | Out-Host
                 $b = Read-Host "--> Branch to merge INTO your current branch"
                 if ($b) {
-                    $c = Read-Host "--> Confirm merging '$b' into '$(git branch --show-current)'? (y/n)"
+                    $c = Read-Host "--> Confirm merging '$b' into '$[git branch --show-current]'? [y/n]"
                     if ($c -eq 'y') {
                         git merge $b
                         $commandsUsed += "git merge $b"
@@ -1267,25 +1267,25 @@ while ($true) {
 
         '21' {
             Write-Host ""
-            Write-Host "╔══════════════════════════════════════════════════════════════╗" -ForegroundColor Green
-            Write-Host "║                        git rebase                            ║" -ForegroundColor Green
-            Write-Host "╚══════════════════════════════════════════════════════════════╝" -ForegroundColor Green
+            Write-Host "+==============================================================+" -ForegroundColor Green
+            Write-Host "|                        git rebase                            |" -ForegroundColor Green
+            Write-Host "+==============================================================+" -ForegroundColor Green
             Write-Host "  What it does : Rewrites your branch's history by moving/combining commits." -ForegroundColor Cyan
             Write-Host "  When to use  : To create a cleaner, linear history by replaying your commits on a new base." -ForegroundColor Cyan
-            Write-Host "  Safe?        : CAREFUL — rewrites commit hashes. NEVER rebase public/shared branches." -ForegroundColor Red
+            Write-Host "  Safe?        : CAREFUL -- rewrites commit hashes. NEVER rebase public/shared branches." -ForegroundColor Red
             Write-Host ""
             Write-Host "  Hints:" -ForegroundColor White
-            Write-Host "  • Rebase before merging often leads to a tidier commit graph." -ForegroundColor DarkGray
-            Write-Host "  • Use 'git rebase --abort' to stop a rebase in progress." -ForegroundColor DarkGray
-            Write-Host "  • Best applied to your own private feature branches before they are shared." -ForegroundColor DarkGray
-            Write-Host "  • Interactive rebase ('-i') allows for advanced editing like squashing or reordering commits." -ForegroundColor DarkGray
+            Write-Host "  - Rebase before merging often leads to a tidier commit graph." -ForegroundColor DarkGray
+            Write-Host "  - Use 'git rebase --abort' to stop a rebase in progress." -ForegroundColor DarkGray
+            Write-Host "  - Best applied to your own private feature branches before they are shared." -ForegroundColor DarkGray
+            Write-Host "  - Interactive rebase ('-i') allows for advanced editing like squashing or reordering commits." -ForegroundColor DarkGray
             Write-Host ""
 
             if (Check-Remote) {
                 Write-Host "--> Available branches (local):"; git branch | Out-Host
                 $b = Read-Host '--> Branch to rebase your current branch ONTO (e.g., main)'
                 if ($b) {
-                    $c = Read-Host "--> WARNING: Rebase current branch onto '$b'? This rewrites history! (y/n)"
+                    $c = Read-Host "--> WARNING: Rebase current branch onto '$b'? This rewrites history! [y/n]"
                     if ($c -eq 'y') {
                         git rebase $b
                         $commandsUsed += "git rebase $b"
@@ -1298,23 +1298,23 @@ while ($true) {
 
         '22' {
             Write-Host ""
-            Write-Host "╔══════════════════════════════════════════════════════════════╗" -ForegroundColor Green
-            Write-Host "║                       git cherry-pick                        ║" -ForegroundColor Green
-            Write-Host "╚══════════════════════════════════════════════════════════════╝" -ForegroundColor Green
+            Write-Host "+==============================================================+" -ForegroundColor Green
+            Write-Host "|                       git cherry-pick                        |" -ForegroundColor Green
+            Write-Host "+==============================================================+" -ForegroundColor Green
             Write-Host "  What it does : Applies a specific commit from one branch onto another." -ForegroundColor Cyan
             Write-Host "  When to use  : To port a single bug fix or small feature commit to another branch without merging entire branches." -ForegroundColor Cyan
             Write-Host "  Safe?        : Yes, but conflicts can occur if the changes don't apply cleanly." -ForegroundColor Yellow
             Write-Host ""
             Write-Host "  Hints:" -ForegroundColor White
-            Write-Host "  • You'll need the commit hash (the unique identifier) of the commit you want to pick." -ForegroundColor DarkGray
-            Write-Host "  • Commit hashes can be found using 'git log'." -ForegroundColor DarkGray
-            Write-Host "  • Can cherry-pick multiple commits in a row." -ForegroundColor DarkGray
-            Write-Host "  • A new commit is created on the current branch with the changes from the picked commit." -ForegroundColor DarkGray
+            Write-Host "  - You'll need the commit hash (the unique identifier) of the commit you want to pick." -ForegroundColor DarkGray
+            Write-Host "  - Commit hashes can be found using 'git log'." -ForegroundColor DarkGray
+            Write-Host "  - Can cherry-pick multiple commits in a row." -ForegroundColor DarkGray
+            Write-Host "  - A new commit is created on the current branch with the changes from the picked commit." -ForegroundColor DarkGray
             Write-Host ""
 
             $h = Read-Host "--> Commit hash to cherry-pick"
             if ($h) {
-                $c = Read-Host "--> Cherry-pick commit '$h' onto current branch? (y/n)"
+                $c = Read-Host "--> Cherry-pick commit '$h' onto current branch? [y/n]"
                 if ($c -eq 'y') {
                     git cherry-pick $h
                     $commandsUsed += "git cherry-pick $h"
@@ -1326,23 +1326,23 @@ while ($true) {
 
         '23' {
             Write-Host ""
-            Write-Host "╔══════════════════════════════════════════════════════════════╗" -ForegroundColor Green
-            Write-Host "║                        git revert                            ║" -ForegroundColor Green
-            Write-Host "╚══════════════════════════════════════════════════════════════╝" -ForegroundColor Green
+            Write-Host "+==============================================================+" -ForegroundColor Green
+            Write-Host "|                        git revert                            |" -ForegroundColor Green
+            Write-Host "+==============================================================+" -ForegroundColor Green
             Write-Host "  What it does : Creates a new commit that undoes the changes of a previous commit." -ForegroundColor Cyan
             Write-Host "  When to use  : To safely undo changes that have already been pushed to a shared branch." -ForegroundColor Cyan
-            Write-Host "  Safe?        : Yes — it doesn't rewrite history, making it safer for shared branches than rebase/reset." -ForegroundColor Green
+            Write-Host "  Safe?        : Yes -- it doesn't rewrite history, making it safer for shared branches than rebase/reset." -ForegroundColor Green
             Write-Host ""
             Write-Host "  Hints:" -ForegroundColor White
-            Write-Host "  • You'll need the commit hash of the commit you want to revert." -ForegroundColor DarkGray
-            Write-Host "  • The new 'revert' commit will appear in your history, clearly showing the undo." -ForegroundColor DarkGray
-            Write-Host "  • Use '--no-edit' to skip opening the commit message editor for the revert commit." -ForegroundColor DarkGray
-            Write-Host "  • Safer than 'git reset' when working collaboratively." -ForegroundColor DarkGray
+            Write-Host "  - You'll need the commit hash of the commit you want to revert." -ForegroundColor DarkGray
+            Write-Host "  - The new 'revert' commit will appear in your history, clearly showing the undo." -ForegroundColor DarkGray
+            Write-Host "  - Use '--no-edit' to skip opening the commit message editor for the revert commit." -ForegroundColor DarkGray
+            Write-Host "  - Safer than 'git reset' when working collaboratively." -ForegroundColor DarkGray
             Write-Host ""
 
             $h = Read-Host "--> Commit hash to revert"
             if ($h) {
-                $c = Read-Host "--> Revert commit '$h' (creates a new commit to undo it)? (y/n)"
+                $c = Read-Host "--> Revert commit '$h' [creates a new commit to undo it]? [y/n]"
                 if ($c -eq 'y') {
                     git revert --no-edit $h
                     $commandsUsed += "git revert --no-edit $h"
@@ -1354,23 +1354,23 @@ while ($true) {
 
         '24' {
             Write-Host ""
-            Write-Host "╔══════════════════════════════════════════════════════════════╗" -ForegroundColor Green
-            Write-Host "║                         git tag                              ║" -ForegroundColor Green
-            Write-Host "╚══════════════════════════════════════════════════════════════╝" -ForegroundColor Green
+            Write-Host "+==============================================================+" -ForegroundColor Green
+            Write-Host "|                         git tag                              |" -ForegroundColor Green
+            Write-Host "+==============================================================+" -ForegroundColor Green
             Write-Host "  What it does : Marks a specific commit in your history with a permanent label (tag)." -ForegroundColor Cyan
             Write-Host "  When to use  : To mark release points (e.g., v1.0, v2.0) or significant milestones." -ForegroundColor Cyan
-            Write-Host "  Safe?        : Yes — creates a reference, doesn't change code or history." -ForegroundColor Green
+            Write-Host "  Safe?        : Yes -- creates a reference, doesn't change code or history." -ForegroundColor Green
             Write-Host ""
             Write-Host "  Hints:" -ForegroundColor White
-            Write-Host "  • Annotated tags ('git tag -a') are recommended as they include a tag message, author, and date." -ForegroundColor DarkGray
-            Write-Host "  • Tags are not pushed to remote automatically; use 'git push origin <tagname>' to share them." -ForegroundColor DarkGray
-            Write-Host "  • Commonly used for semantic versioning (e.g., v1.2.3)." -ForegroundColor DarkGray
-            Write-Host "  • You can view existing tags with 'git tag'." -ForegroundColor DarkGray
+            Write-Host "  - Annotated tags ('git tag -a') are recommended as they include a tag message, author, and date." -ForegroundColor DarkGray
+            Write-Host '  - Tags are not pushed automatically; use git push origin [tagname] to share them.' -ForegroundColor DarkGray
+            Write-Host "  - Commonly used for semantic versioning (e.g., v1.2.3)." -ForegroundColor DarkGray
+            Write-Host "  - You can view existing tags with 'git tag'." -ForegroundColor DarkGray
             Write-Host ""
 
             $t = Read-Host '--> Tag name (e.g., v1.0.0)'
             if ($t) {
-                $m = Read-Host "--> Tag message (e.g., 'Release version 1.0.0')"
+                $m = Read-Host "--> Tag message [e.g., 'Release version 1.0.0']"
                 if ([string]::IsNullOrWhiteSpace($m)) { $m = "$t release" }
                 git tag -a $t -m "$m"
                 $commandsUsed += "git tag -a $t -m '$m'"
